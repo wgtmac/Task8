@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+
+    <display-name>Task 8</display-name>
+    <description> Web Service </description>
+
+    <servlet>
+        <servlet-name>  controller-servlet       </servlet-name>
+        <servlet-class>
+        	edu.cmu.cs.ebiz.teamHEX.task8.controller.Controller
+        </servlet-class>
+        
+        <init-param>
+          <param-name>    TwitterKey         </param-name> 
+	      <param-value>   9Uf77tLBxWHnaVADJkRQk5fqY   </param-value>
+        </init-param>
+        
+         <init-param>
+          <param-name>    TwitterSecret         </param-name> 
+	      <param-value>   TfUimzpTL2QiKPeFPfPiAWUtz1O57BYNEPwaqPomy0WFOhQzCR   </param-value>
+        </init-param>
+        
+        <init-param>
+          <param-name>    FlickerKey                 </param-name> 
+	      <param-value>   efc31a64e8a163cb72f46072c81df255    </param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>  controller-servlet        </servlet-name>
+        <url-pattern>   *.do                     </url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>login.do</welcome-file>
+    </welcome-file-list>
+  
+</web-app>
