@@ -21,5 +21,5 @@ public class Model {
 	}
 
 	public Twitter getTwitter () { return twitter; }
-	public Flickr getFlicker () { return flicker; }
+	public Flickr getFlickr () { return flicker; }
 }

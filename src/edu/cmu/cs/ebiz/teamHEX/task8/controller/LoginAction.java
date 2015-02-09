@@ -21,7 +21,7 @@ public class LoginAction extends Action {
 	
 	public LoginAction(Model model) {
 		twitter = model.getTwitter();
-		flicker = model.getFlicker();
+		flicker = model.getFlickr();
 	}
 
 	public String getName() { return "login.do"; }
