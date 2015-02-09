@@ -225,21 +225,6 @@ public class Twitter extends WebAccessor {
 		ArrayList<String> resultArrayList = new ArrayList<String>();
 		return searchTweets(parameters, resultArrayList);
 	}
-	
-	public int getCountForRestaurants (String keyWord, int datesBefore) throws IOException {
-		HashMap<String, String> parameters = new HashMap<String, String> ();
-	    DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-	    Calendar cal = Calendar.getInstance();
-	    cal.add(Calendar.DATE, -datesBefore);
-	    
-		parameters.put("q", keyWord +" since:" + formatter.format(cal.getTime()));
-		parameters.put("q", keyWord +" since:" + formatter.format(cal.getTime()));
-		parameters.put("result_type", "recent");
-		parameters.put("src", "typd");
-		
-		ArrayList<String> resultArrayList = new ArrayList<String>();
-		return searchTweets(parameters, resultArrayList);
-	}
 
 	public int getCountOfSports (String city) throws IOException {
 		return getCount(city + " @espn", 1);
@@ -256,8 +241,18 @@ public class Twitter extends WebAccessor {
 	public int getCountOfJobs (String city) throws IOException {
 		return getCount(city + " jobs", 1);
 	}
+	
 	public int getCountOfRestaurants (String city) throws IOException {
-		return getCountForRestaurants(city + " restaurant OR pubs OR nightclubs OR food%3A)", 0);
+		return getCount(city + " restaurant OR pubs OR nightclubs OR food%3A)", 0);
+	}
+	
+	/**
+	 * NOTE:
+	 * this query is missing !
+	 * */
+	public int getCountOfCelebrity (String city) throws IOException {
+		return 50;
+		//return getCount(city + " restaurant OR pubs OR nightclubs OR food%3A)", 0);
 	}
 	
 	public void fetchTweetsExample () throws IOException {	

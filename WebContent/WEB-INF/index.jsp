@@ -74,6 +74,20 @@
 
       <!-- /.col-lg-12 --> 
     </div>
+    
+         <c:choose>
+            <c:when test="${ (empty msg) }">
+            </c:when>
+            <c:otherwise>
+                <h3 style="color: blue">${msg}</h3>
+            </c:otherwise>
+        </c:choose>
+        
+        <c:forEach var="error" items="${errors}">
+            <h3 style="color: red">${error}</h3>
+         </c:forEach>
+            
+            
     <div class="panel panel-red">
       <div class="panel-heading">
         <h3 align="center">Set Up a Match!</h3>
@@ -81,7 +95,7 @@
       <div class="panel-body">
         <div class="row" align="center">
           <div class="col-lg-12" align="center">
-          <form role="form">
+          <form role="form" method="post">
             <datalist id="cities">
               <option value="Pittsburgh, PA">
               <option value="Pittsburgh, CA">
@@ -92,7 +106,7 @@
             <table align="center"><tr><td width="300px" align="center">
            <div class="form-group">
               <h4>Choose City 1</h4>
-              <input name="cities1" required class="form-control" list="cities" value="{city}">
+              <input name="cities1" required class="form-control" list="cities" value="">
             </div>
             </td>
             <td width="200px" align="center">
@@ -114,27 +128,27 @@
 			  <table>
 			    <tr>
 			      <td width="200"><label>
-                  <input name="Parameters" type="checkbox" id="Parameters_1" value="sports" checked>
+                  <input type="checkbox" name="sports" id="Parameters_1" value="sports" checked>
 			        Sports
 			        </label></td>
 			      <td><label>
-			        <input type="checkbox" name="Parameters" value="restaurants" id="Parameters_0" checked>
+			        <input type="checkbox" name="restaurants" value="restaurants" id="Parameters_0" checked>
 			        Restaurants & Nightlife</label></td>
 			      </tr>
 			    <tr>
 			      <td><label>
-			        <input type="checkbox" name="Parameters" checked value="employment" id="Parameters_2">
-			        Weather</label></td>
+			        <input type="checkbox" name="employment" checked value="employment" id="Parameters_2">
+			        Jobs</label></td>
 			      <td><label>
-			        <input type="checkbox" name="Parameters" checked value="celebrity" id="Parameters_3">
+			        <input type="checkbox" name="celebrity" checked value="celebrity" id="Parameters_3">
 			        Celebrity Buzz</label></td>
 			      </tr>
 			    <tr>
 			      <td><label>
-			        <input type="checkbox" name="Parameters" checked value="education" id="Parameters_4">
+			        <input type="checkbox" name="education" checked value="education" id="Parameters_4">
 			        Education</label></td>
 			      <td><label>
-			        <input type="checkbox" name="Parameters" checked value="crime" id="Parameters_5">
+			        <input type="checkbox" name="crime" checked value="crime" id="Parameters_5">
 			        Crime</label></td>
 			      </tr>
 			    </table>
@@ -144,7 +158,7 @@
             <div class="row">
          	 <div class="col-lg-12" align="center">
             <div class="form-group">
-            <button type="submit" class="btn btn-danger">
+            <button type="submit"  name="action" value="compare" class="btn btn-danger">
             <h1>GO!</h1>
             </button>
           </form>
@@ -167,11 +181,13 @@
             What's up in {city}? If this is not the city you are looking for, you can change it here: &nbsp;</td>
                             <td>
                             <div class="input-group custom-search-form">
-                                <input type="text" name="list3" list="cities" class="form-control" >
+                            <form method="post">
+                                <input type="text" name="local" list="cities" class="form-control" >
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
+                                <button class="btn btn-default" type="submit" name="action" value="change">
                                     <i class="fa fa-search"></i>
-                                </button></span></div></td></tr></table></div></div></div>
+                                </button></span>
+                                </form></div></td></tr></table></div></div></div>
                                
         <div class="row">                       
         <div class="col-lg-6 col-md-6">
