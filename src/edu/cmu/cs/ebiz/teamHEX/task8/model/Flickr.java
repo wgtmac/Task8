@@ -26,9 +26,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class Flicker extends WebAccessor {
-	private final String flickerKey;
-    public Flicker (String key){ flickerKey = key; }  
+public class Flickr extends WebAccessor {
+	private final String flickrKey;
+    public Flickr (String key){ flickrKey = key; }  
     
     public static final String SEARCH = "flickr.photos.search";
     
@@ -44,7 +44,7 @@ public class Flicker extends WebAccessor {
 		HttpsURLConnection connection = null;
 		
 		URL url = new URL("https://api.flickr.com/services/rest/?method=" + SEARCH
-				+ "&api_key=" + flickerKey + "&per_page=" + count
+				+ "&api_key=" + flickrKey + "&per_page=" + count
 				+ "&text=" + URLEncoder.encode(keyword, "UTF-8")
 				+ "&tag_mode=all&content_type=1&sort=relevance");
 		
@@ -88,6 +88,8 @@ public class Flicker extends WebAccessor {
         	
 			String flickrurl = "http://static.flickr.com/" + server + "/" + id + "_"	+ secret + ".jpg";
         	System.out.println(flickrurl);
+        	
+        	res.add(flickrurl);
         }
         
 		return res;

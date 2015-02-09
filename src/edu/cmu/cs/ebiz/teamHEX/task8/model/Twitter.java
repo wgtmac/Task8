@@ -219,19 +219,30 @@ public class Twitter extends WebAccessor {
 	    cal.add(Calendar.DATE, -datesBefore);
 	    
 		parameters.put("q", keyWord +" since:" + formatter.format(cal.getTime()));
-		//parameters.put("result_type", "recent");
+		parameters.put("result_type", "recent");
 		parameters.put("src", "typd");
 		
 		ArrayList<String> resultArrayList = new ArrayList<String>();
 		return searchTweets(parameters, resultArrayList);
 	}
-	
+
 	public int getCountOfSports (String city) throws IOException {
-		return getCount(city + " @espn", 3);
+		return getCount(city + " @espn", 1);
+	}
+	
+	public int getCountOfEducation (String city) throws IOException {
+		return getCount(city + " graduate", 1);
+	}
+	
+	public int getCountOfCrime (String city) throws IOException {
+		return getCount(city + " crime", 1);
 	}
 	
 	public void fetchTweetsExample () throws IOException {	
 		//System.out.println(searchTrends("Pittsburgh"));
-		System.out.println(getCountOfSports("Los Angeles NFL"));
+		System.out.println(getCountOfCrime("Los Angeles"));
+		System.out.println(getCountOfCrime("New York"));
+		System.out.println(getCountOfCrime("Pittsburgh"));
+		System.out.println(getCountOfCrime("Boston"));
 	}
 }

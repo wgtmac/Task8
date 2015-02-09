@@ -9,7 +9,7 @@ import javax.xml.xpath.XPathExpressionException;
 
 import org.xml.sax.SAXException;
 
-import edu.cmu.cs.ebiz.teamHEX.task8.model.Flicker;
+import edu.cmu.cs.ebiz.teamHEX.task8.model.Flickr;
 import edu.cmu.cs.ebiz.teamHEX.task8.model.Model;
 import edu.cmu.cs.ebiz.teamHEX.task8.model.Twitter;
 
@@ -17,7 +17,7 @@ public class LoginAction extends Action {
 	//private FormBeanFactory<LoginForm> formBeanFactory = FormBeanFactory.getInstance(LoginForm.class);
 
 	private Twitter twitter;
-	private Flicker flicker;
+	private Flickr flicker;
 	
 	public LoginAction(Model model) {
 		twitter = model.getTwitter();
