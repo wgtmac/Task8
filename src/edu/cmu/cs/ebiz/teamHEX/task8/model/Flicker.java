@@ -94,6 +94,6 @@ public class Flicker extends WebAccessor {
 	}
 	
 	public void fetchPhotoExample () throws XPathExpressionException, IOException, XMLStreamException, ParserConfigurationException, SAXException {
-		fetchPhotos("Kobe Bryant", 3);
+		//fetchPhotos("Kobe Bryant", 3);
 	}
 }
