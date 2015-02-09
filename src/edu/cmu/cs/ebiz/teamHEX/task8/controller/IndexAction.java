@@ -13,18 +13,18 @@ import edu.cmu.cs.ebiz.teamHEX.task8.model.Flickr;
 import edu.cmu.cs.ebiz.teamHEX.task8.model.Model;
 import edu.cmu.cs.ebiz.teamHEX.task8.model.Twitter;
 
-public class LoginAction extends Action {
+public class IndexAction extends Action {
 	//private FormBeanFactory<LoginForm> formBeanFactory = FormBeanFactory.getInstance(LoginForm.class);
 
 	private Twitter twitter;
 	private Flickr flicker;
 	
-	public LoginAction(Model model) {
+	public IndexAction(Model model) {
 		twitter = model.getTwitter();
 		flicker = model.getFlickr();
 	}
 
-	public String getName() { return "login.do"; }
+	public String getName() { return "index.do"; }
 
 	public String perform(HttpServletRequest request) {
 		try {
@@ -33,6 +33,6 @@ public class LoginAction extends Action {
 		} catch (IOException | XPathExpressionException | XMLStreamException | ParserConfigurationException | SAXException e) {
 			e.printStackTrace();
 		}
-		return "login.jsp";
+		return "index.jsp";
 	}
 }

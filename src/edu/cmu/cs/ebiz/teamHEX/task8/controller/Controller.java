@@ -17,7 +17,7 @@ public class Controller extends HttpServlet {
 	public void init() throws ServletException {
 		Model model = new Model(getServletConfig());
 
-		Action.add(new LoginAction(model));
+		Action.add(new IndexAction(model));
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -44,14 +44,9 @@ public class Controller extends HttpServlet {
 		String servletPath = request.getServletPath();
 		String action = getActionName(servletPath);
 
-		if (session.getAttribute("user") == null) {
-			// If the user hasn't logged in, so login is the only option
-			return Action.perform("login.do", request);
-		}
-
 		if (action.equals("welcome")) {
 			// User is logged in, but at the root of our web app
-			return Action.perform("home.do", request);
+			return Action.perform("index.do", request);
 		}
 
 		// Let the logged in user run his chosen action

@@ -240,9 +240,9 @@ public class Twitter extends WebAccessor {
 	
 	public void fetchTweetsExample () throws IOException {	
 		//System.out.println(searchTrends("Pittsburgh"));
-		System.out.println(getCountOfCrime("Los Angeles"));
-		System.out.println(getCountOfCrime("New York"));
-		System.out.println(getCountOfCrime("Pittsburgh"));
-		System.out.println(getCountOfCrime("Boston"));
+		//System.out.println(getCountOfCrime("Los Angeles"));
+//		System.out.println(getCountOfCrime("New York"));
+//		System.out.println(getCountOfCrime("Pittsburgh"));
+//		System.out.println(getCountOfCrime("Boston"));
 	}
 }
