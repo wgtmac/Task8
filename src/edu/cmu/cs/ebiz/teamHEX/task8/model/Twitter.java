@@ -251,8 +251,7 @@ public class Twitter extends WebAccessor {
 	 * this query is missing !
 	 * */
 	public int getCountOfCelebrity (String city) throws IOException {
-		return 50;
-		//return getCount(city + " restaurant OR pubs OR nightclubs OR food%3A)", 0);
+		return getCount(city + " mtv OR ftvdotcom OR tmz OR eNews OR bravomagazin OR thr OR deadline%3A)", 7);
 	}
 	
 	public void fetchTweetsExample () throws IOException {	
@@ -268,5 +267,6 @@ public class Twitter extends WebAccessor {
 		System.out.println(getCountOfJobs("San Francisco"));
 		System.out.println(getCountOfRestaurants("Los Angeles"));
 		System.out.println(getCountOfRestaurants("Pittsburgh"));
+		System.out.println(getCountOfCelebrity("Los Angeles"));
 	}
 }
