@@ -86,9 +86,8 @@
         <c:forEach var="error" items="${errors}">
             <h3 style="color: red">${error}</h3>
          </c:forEach>
-            
-            
-    <div class="panel panel-red">
+
+			<div class="panel panel-red">
       <div class="panel-heading">
         <h3 align="center">Set Up a Match!</h3>
       </div>
