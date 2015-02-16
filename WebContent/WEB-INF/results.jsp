@@ -41,7 +41,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
 
 </head>
 
@@ -58,217 +57,6 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
-	
-	
-	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'City');
-        data.addColumn('number', 'Count');
-        data.addRows([
-          ['${ city1sports }',${ city1sportsscore }],
-          ['${ city2sports }',${ city2sportsscore }],
-        ]);
-
-        // Set chart options
-        var options = {'title':'Sport Comparision',
-        				is3D : true,
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_sport'));
-        chart.draw(data, options);
-      }
-    </script>
-    
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'City');
-        data.addColumn('number', 'Count');
-        data.addRows([
-          ['${ city1res }',${ city1resscore }],
-          ['${ city2res }',${ city2resscore }],
-        ]);
-
-        // Set chart options
-        var options = {'title':'Resturant Comparision',
-        				is3D : true,
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_res'));
-        chart.draw(data, options);
-      }
-    </script>
-    
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'City');
-        data.addColumn('number', 'Count');
-        data.addRows([
-          ['${ city1job }',${ city1jobscore }],
-          ['${ city2job }',${ city2jobscore }],
-        ]);
-
-        // Set chart options
-        var options = {'title':'Celebrity Comparision',
-        		       is3D : true,
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_job'));
-        chart.draw(data, options);
-      }
-    </script>
-    
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'City');
-        data.addColumn('number', 'Count');
-        data.addRows([
-          ['${ city1cel }',${ city1celscore }],
-          ['${ city2cel }',${ city2celscore }],
-        ]);
-
-        // Set chart options
-        var options = {'title':'Employee Comparision',
-        		       is3D : true,
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_cel'));
-        chart.draw(data, options);
-      }
-    </script>
-    
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'City');
-        data.addColumn('number', 'Count');
-        data.addRows([
-          ['${ city1edu }',${ city1eduscore }],
-          ['${ city2edu }',${ city2eduscore }],
-        ]);
-
-        // Set chart options
-        var options = {'title':'Education Comparision',
-        		       is3D : true,
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_edu'));
-        chart.draw(data, options);
-      }
-    </script>
-    
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'City');
-        data.addColumn('number', 'Count');
-        data.addRows([
-          ['${ city1cri }',${ city1criscore }],
-          ['${ city2cri }',${ city2criscore }],
-        ]);
-
-        // Set chart options
-        var options = {'title':'Crime Comparision',
-        		       is3D : true,
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_cri'));
-        chart.draw(data, options);
-      }
-    </script>
 
 	<div id="wrapper">
 
@@ -307,15 +95,12 @@
 		</nav>
 		<div id="page-wrapper">
 			<div class="row">
-			
 				<div class="col-lg-12">
 					<h1 class="page-header">We Have a Winner!</h1>
 				</div>
-				<br>
 
 				<!-- /.col-lg-12 -->
 			</div>
-				
 			<div class="panel panel-yellow">
 				<div class="panel-heading">
 					<h3 align="center">${ city1 } is Cooler Than ${ city2 }</h3>
@@ -441,12 +226,7 @@
 					</div>
 
 				</div>
-				<div id="chart_div_sport"></div>
-				<div id="chart_div_res"></div>
-				<div id="chart_div_job"></div>
-				<div id="chart_div_cel"></div>
-				<div id="chart_div_edu"></div>
-				<div id="chart_div_cri"></div>
+				graphics
 			</div>
 
 
@@ -603,7 +383,7 @@
 			</div>
 			<hr>
 			<p align="center">
-				Team Hex | All Rights Reserved | Carnegie Mellon University Â© 2015<br>
+				Team Hex | All Rights Reserved | Carnegie Mellon University © 2015<br>
 				Site developed by for educational purposes only
 			</p>
 			<!-- /#page-wrapper -->
