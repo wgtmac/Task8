@@ -63,6 +63,10 @@ public class IndexAction extends Action {
 					case "sports":
 						score1 = twitter.getCountOfSports(city1);
 						score2 = twitter.getCountOfSports(city2);
+						request.setAttribute("city1sportsscore", score1);
+						request.setAttribute("city1sports", city1);
+						request.setAttribute("city2sportsscore", score2);
+						request.setAttribute("city2sports", city2);
 						request.setAttribute("sports", score1 >= score2 ? city1 : city2);
 						total1 += score1 * 1;
 						total2 += score2 * 1;
@@ -70,6 +74,10 @@ public class IndexAction extends Action {
 					case "restaurants":
 						score1 = twitter.getCountOfRestaurants(city1);
 						score2 = twitter.getCountOfRestaurants(city2);
+						request.setAttribute("city1resscore", score1);
+						request.setAttribute("city1res", city1);
+						request.setAttribute("city2resscore", score2);
+						request.setAttribute("city2res", city2);
 						request.setAttribute("restaurants", score1 >= score2 ? city1 : city2);
 						total1 += score1 * 1;
 						total2 += score2 * 1;
@@ -77,6 +85,10 @@ public class IndexAction extends Action {
 					case "employment":
 						score1 = twitter.getCountOfJobs(city1);
 						score2 = twitter.getCountOfJobs(city2);
+						request.setAttribute("city1jobscore", score1);
+						request.setAttribute("city1job", city1);
+						request.setAttribute("city2jobscore", score2);
+						request.setAttribute("city2job", city2);
 						request.setAttribute("employment", score1 >= score2 ? city1 : city2);
 						total1 += score1 * 1;
 						total2 += score2 * 1;
@@ -84,6 +96,10 @@ public class IndexAction extends Action {
 					case "celebrity":
 						score1 = twitter.getCountOfCelebrity(city1);
 						score2 = twitter.getCountOfCelebrity(city2);
+						request.setAttribute("city1celscore", score1);
+						request.setAttribute("city1cel", city1);
+						request.setAttribute("city2celscore", score2);
+						request.setAttribute("city2cel", city2);
 						request.setAttribute("celebrity", score1 >= score2 ? city2 : city1);
 						total1 += score1 * 1;
 						total2 += score2 * 1;
@@ -91,6 +107,10 @@ public class IndexAction extends Action {
 					case "education":
 						score1 = twitter.getCountOfEducation(city1);
 						score2 = twitter.getCountOfEducation(city2);
+						request.setAttribute("city1eduscore", score1);
+						request.setAttribute("city1edu", city1);
+						request.setAttribute("city2eduscore", score2);
+						request.setAttribute("city2edu", city2);
 						request.setAttribute("education", score1 >= score2 ? city1 : city2);
 						total1 += score1 * 1;
 						total2 += score2 * 1;
@@ -98,6 +118,10 @@ public class IndexAction extends Action {
 					case "crime":
 						score1 = twitter.getCountOfCrime(city1);
 						score2 = twitter.getCountOfCrime(city2);
+						request.setAttribute("city1criscore", score1);
+						request.setAttribute("city1cri", city1);
+						request.setAttribute("city2criscore", score2);
+						request.setAttribute("city2cri", city2);
 						request.setAttribute("crime", score1 >= score2 ? city2 : city1);
 						total1 += (100 - score1) * 2;
 						total2 += (100 - score2) * 2;
