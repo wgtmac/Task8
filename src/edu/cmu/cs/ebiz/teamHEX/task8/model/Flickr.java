@@ -120,17 +120,22 @@ public class Flickr extends WebAccessor {
 		return res;
 	}
 
-	public ArrayList<String> getListOfDiscussionsForGroup(String group_id,String api_token) throws IOException {
+	public ArrayList<String> getListOfDiscussionsForGroup(String group_id) throws IOException {
 		HttpsURLConnection connection = null;
 
 		// get the oauth token here
-		String token = api_token;
+		String token = this.token;
 
 		// get the api_key
 		String api_key = flickrKey;
 
 		// put the api_sig here
-		String sign = null;
+        String sig = flickrSecret + "api_key" + flickrKey + "method" + "flickr.groups.discuss.topics.getList";
+		
+		/**
+		 * The API signature must be MD5 encoded and appended to the request
+		 */
+		String sign = MD5(sig); 
 
 		String queryUrl = "https://api.flickr.com/services/rest/?method=flickr.groups.discuss.topics.getList&api_key="
 				+ "&group_id="
@@ -189,18 +194,21 @@ public class Flickr extends WebAccessor {
 	}
 	
 
-	public ArrayList<String> getListOfRepliesForTopics(String group_id,String topic_id,
-			String api_token) throws IOException {
+	public ArrayList<String> getListOfRepliesForTopics(String group_id,String topic_id) throws IOException {
 		HttpsURLConnection connection = null;
 
 		// get the oauth token here
-		String token = api_token;
+		String token = this.token;
 
 		// get the api_key
 		String api_key = flickrKey;
 
-		// put the api_sig here
-		String sign = null;
+        String sig = flickrSecret + "api_key" + flickrKey + "method" + "flickr.groups.discuss.replies.getList";
+		
+		/**
+		 * The API signature must be MD5 encoded and appended to the request
+		 */
+		String sign = MD5(sig); 
 
 		String queryUrl = "https://api.flickr.com/services/rest/?method=flickr.groups.discuss.replies.getList&api_key="
 				+ "&group_id="
@@ -270,24 +278,39 @@ public class Flickr extends WebAccessor {
 
 	}
 	
-	public void postNewDiscussion(String group_id,String token, String subject, String message) throws IOException {
+	public void postNewDiscussion(String group_id, String subject, String message) throws IOException {
 		// get the api_key
 		String api_key = flickrKey;
+		
+		// get the oauth token here
+		String token = this.token;
 
-		// put the api_sig here
-		String sign = null;
+
+        String sig = flickrSecret + "api_key" + flickrKey + "method" + "flickr.groups.discuss.topics.add";
+		
+		/**
+		 * The API signature must be MD5 encoded and appended to the request
+		 */
+		String sign = MD5(sig); 
 		
 		String queryUrl = "https://api.flickr.com/services/rest/?method=flickr.groups.discuss.topics.add&api_key="+api_key+"&group_id="+group_id+"&subject="+subject+"&message="+message+"&format=json&nojsoncallback=1&auth_token="+token+"&api_sig="+sign;
 		System.out.println(queryUrl);
 
 	}
 
-	public void postNewReply(String group_id,String topic_id, String token, String message) throws IOException {
+	public void postNewReply(String group_id,String topic_id, String message) throws IOException {
 		// get the api_key
 		String api_key = flickrKey;
+		// get the oauth token here
+		String token = this.token;
 
-		// put the api_sig here
-		String sign = null;
+
+        String sig = flickrSecret + "api_key" + flickrKey + "method" + "flickr.groups.discuss.replies.add";
+		
+		/**
+		 * The API signature must be MD5 encoded and appended to the request
+		 */
+		String sign = MD5(sig); 
 		
 		String queryUrl = "https://api.flickr.com/services/rest/?method=flickr.groups.discuss.replies.add&api_key="+api_key+"&group_id="+group_id+"&topic_id="+topic_id+"&message="+message+"&format=json&nojsoncallback=1&auth_token="+token+"&api_sig="+sign;
 		System.out.println(queryUrl);
