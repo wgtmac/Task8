@@ -18,6 +18,7 @@ public class Controller extends HttpServlet {
 		Model model = new Model(getServletConfig());
 
 		Action.add(new IndexAction(model));
+		Action.add(new Callback(model));
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -28,6 +29,13 @@ public class Controller extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String nextPage = performTheAction(request);
+		System.out.println("nextpage: " + nextPage);
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		sendToNextPage(nextPage, request, response);
 	}
 
@@ -43,6 +51,13 @@ public class Controller extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String servletPath = request.getServletPath();
 		String action = getActionName(servletPath);
+		
+		
+//		
+//		if (servletPath.indexOf("hexcallback") != -1) {
+//			System.out.println("callback function is caught");
+//			return Action.perform("index.do", request);
+//		}
 
 		if (action.equals("welcome")) {
 			// User is logged in, but at the root of our web app
@@ -64,6 +79,11 @@ public class Controller extends HttpServlet {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND, request.getServletPath());
 			return;
 		}
+		
+		if (nextPage.contains("://")) {
+			response.sendRedirect(nextPage);
+			return;
+		}
 
 		if (nextPage.endsWith(".do")) {
 			response.sendRedirect(nextPage);
@@ -75,6 +95,11 @@ public class Controller extends HttpServlet {
 			d.forward(request, response);
 			return;
 		}
+		
+//		if (!nextPage.isEmpty()) {
+//			response.sendRedirect(nextPage.startsWith("http") ? nextPage: "http://" + nextPage);
+//			return;
+//		}
 
 		throw new ServletException(Controller.class.getName() + ".sendToNextPage(\"" + nextPage + "\"): invalid extension.");
 	}
