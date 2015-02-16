@@ -41,30 +41,30 @@ public class IndexAction extends Action {
 		String token = null;
 		
 		try {
-//			if (session.getAttribute("token") == null) {
-//				if (session.getAttribute("frob") == null) {
-//					frob = flickr.getFrob();
-//					session.setAttribute("frob", frob);
-//				} else {
-//					frob = (String) session.getAttribute("frob");
-//				}
-//				
-//				token = flickr.getToken(frob);
-//				if (token == null) {
-//					flickr.getUserAuthorizationLink(frob);
-//					while (token == null) {
-//						try {
-//							Thread.sleep(1000);
-//						} catch (InterruptedException e) {
-//							e.printStackTrace();
-//						}
-//						token = flickr.getToken(frob);
-//					}
-//				}
-//				session.setAttribute("token", token);
-//			} else {
-//				token = (String) session.getAttribute("token");
-//			}
+			if (session.getAttribute("token") == null) {
+				if (session.getAttribute("frob") == null) {
+					frob = flickr.getFrob();
+					session.setAttribute("frob", frob);
+				} else {
+					frob = (String) session.getAttribute("frob");
+				}
+				
+				token = flickr.getToken(frob);
+				if (token == null) {
+					flickr.getUserAuthorizationLink(frob);
+					while (token == null) {
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						token = flickr.getToken(frob);
+					}
+				}
+				session.setAttribute("token", token);
+			} else {
+				token = (String) session.getAttribute("token");
+			}
 			
 			IndexForm form = formBeanFactory.create(request);
 			request.setAttribute("form", form);

@@ -391,23 +391,23 @@ public class Flickr extends WebAccessor {
 		//System.out.println(request);
 		
 		
-		if (Desktop.isDesktopSupported()) {
-			Desktop desktop = Desktop.getDesktop();
-			try {
-				desktop.browse(new URI(request));
-			} catch (IOException | URISyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			Runtime runtime = Runtime.getRuntime();
-			try {
-				runtime.exec("xdg-open " + request);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+//		if (Desktop.isDesktopSupported()) {
+//			Desktop desktop = Desktop.getDesktop();
+//			try {
+//				desktop.browse(new URI(request));
+//			} catch (IOException | URISyntaxException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		} else {
+//			Runtime runtime = Runtime.getRuntime();
+//			try {
+//				runtime.exec("xdg-open " + request);
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
 
 		return request;
 	}
