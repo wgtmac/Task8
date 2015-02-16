@@ -7,6 +7,7 @@ public class Model {
 	private final String twitterKey;
 	private final String twitterSecret;
 	private final String flickrKey;
+	private final String flickrSecret;
 	
 	private final Twitter twitter;
 	private final Flickr flicker;
@@ -15,9 +16,10 @@ public class Model {
 		twitterKey = config.getInitParameter("TwitterKey");
 		twitterSecret  = config.getInitParameter("TwitterSecret");
 		flickrKey =  config.getInitParameter("FlickrKey");
+		flickrSecret =  config.getInitParameter("FlickrSecret");
 		
 		twitter = new Twitter(twitterKey, twitterSecret);
-		flicker = new Flickr(flickrKey);
+		flicker = new Flickr(flickrKey, flickrSecret);
 	}
 
 	public Twitter getTwitter () { return twitter; }
