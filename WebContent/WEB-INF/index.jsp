@@ -590,7 +590,7 @@
 								</tr>
 							</table>
 						</div>
-						<!-- End of main pannel of Forum -->
+						<!-- End of main pannel of Forums -->
 
 					</div>
 				</div>
