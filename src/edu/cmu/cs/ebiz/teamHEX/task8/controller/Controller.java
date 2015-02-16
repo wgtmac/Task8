@@ -29,13 +29,6 @@ public class Controller extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String nextPage = performTheAction(request);
-		System.out.println("nextpage: " + nextPage);
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		sendToNextPage(nextPage, request, response);
 	}
 
@@ -51,13 +44,6 @@ public class Controller extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String servletPath = request.getServletPath();
 		String action = getActionName(servletPath);
-		
-		
-//		
-//		if (servletPath.indexOf("hexcallback") != -1) {
-//			System.out.println("callback function is caught");
-//			return Action.perform("index.do", request);
-//		}
 
 		if (action.equals("welcome")) {
 			// User is logged in, but at the root of our web app
