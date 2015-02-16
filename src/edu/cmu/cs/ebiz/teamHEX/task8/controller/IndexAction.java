@@ -37,26 +37,20 @@ public class IndexAction extends Action {
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
 		
-		String frob = null;
-		String token = null;
 		
 		try {
 			if (session.getAttribute("token") == null) {
 				if (session.getAttribute("frob") == null) {
-					frob = flickr.getFrob();
-					session.setAttribute("frob", frob);
-				} else {
-					frob = (String) session.getAttribute("frob");
+					flickr.frob = flickr.getFrob();
+					session.setAttribute("frob", flickr.frob);
 				}
 				
-				token = flickr.getToken(frob);
-				if (token == null) {
-					request.setAttribute("authUrl", flickr.getUserAuthorizationLink(frob));
+				flickr.token = flickr.getToken(flickr.frob);
+				if (flickr.token == null) {
+					request.setAttribute("authUrl", flickr.getUserAuthorizationLink(flickr.frob));
 					return "index.jsp";
 				}
-				session.setAttribute("token", token);
-			} else {
-				token = (String) session.getAttribute("token");
+				session.setAttribute("token", flickr.token);
 			}
 			
 			IndexForm form = formBeanFactory.create(request);
