@@ -9,16 +9,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Team Hex Web Service - Welcome</title>
+<title>Team Hex Web Service - About Cool-O-Meter</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <link
 	href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="resources/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+<link href="resources/bower_components/metisMenu/dist/metisMenu.min.css"
+	rel="stylesheet">
 <link href="resources/bower_components/metisMenu/dist/metisMenu.min.css"
 	rel="stylesheet">
 
@@ -27,19 +30,23 @@
 <link href="resources/dist/css/sb-admin-2.css" rel="stylesheet">
 
 <!-- Morris Charts CSS -->
-<link href="resources/bower_components/morrisjs/morris.css" rel="stylesheet">
+<link href="resources/bower_components/morrisjs/morris.css"
+	rel="stylesheet">
 <link href="resources/bower_components/morrisjs/morris.css"
 	rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="resources/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link
+	href="resources/bower_components/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 <link
 	href="resources/bower_components/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script
+	src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <script type="text/javascript" src="//js.maxmind.com/js/geoip.js">
 	
 </script>
@@ -47,8 +54,8 @@
 </head>
 
 <body>
-<div id="wrapper"> 
- 
+	<div id="wrapper">
+
 		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation"
 			style="margin-bottom: 0">
@@ -59,23 +66,8 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.do">Hello, we believe you
-					are in <font color="black"><script type="text/javascript">
-						var city = geoip_city() + ", " + geoip_region();
-						if (city.length <= 2) {
-							change = "an unknown cool place";
-							city = "";
-						}
-						if (typeof change === 'undefined') {
-							document.write(city);
-						} else {
-							document.write(change);
-						}
-					</script></font>
-				</a>
+				<a class="navbar-brand" href="#">Learn about Cool-O-Meter</a>
 			</div>
-
-
 			<!-- /.navbar-header -->
 
 			<!-- /.navbar-top-links -->
@@ -84,9 +76,7 @@
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
 						<li><a href="index.do"><i class="fa fa-dashboard fa-fw"></i>
-								Cool-O-Meter Home</a></li>
-						<li><a href="about.jsp"><i class="fa fa-files-o fa-fw"></i> What
-								is Cool-O-Meter?</a></li>
+								Back to Homepage</a></li>
 					</ul>
 					<br> <img src="resources/img/banner.png"
 						alt="social media banner" />
@@ -98,13 +88,16 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Cool-O-Meter</h1>
-					<div class="alert alert-success alert-dismissable">
+					<h1 class="page-header">How does Cool-O-Meter</h1>
+					<div class="alert alert-default alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert"
 							aria-hidden="true">&times;</button>
-						Use our meter to find out how "cool" is your city compared to
-						another one. To learn about the rationale used <a href="about.jsp"
-							class="alert-link">click here</a>.
+						Our tool is based on Web Service APIs from Twitter, Flicker and
+						Facebook. All you need to know is that these companies have built
+						methods of communication (APIs) so that they can make their own
+						capabilities available to a wider audience through the Internet.
+						Our tool requests data to these companies using those APIs and
+						performs an analysis of the data based on the following criteria:
 					</div>
 				</div>
 			</div>
@@ -120,20 +113,6 @@
 			<c:forEach var="error" items="${errors}">
 				<h3 style="color: red">${error}</h3>
 			</c:forEach>
-            
-           <c:if test="${empty token}">
-				<script>
-				 var w = window.open("${authUrl}");
-				 
-				 function checkFunction () {
-					 if (w.closed) {
-						// alert("hehe");
-						 location.reload();
-					 }
-				 }
-				 var time=self.setInterval("checkFunction()",1000)
-				</script>
-			</c:if>
 
 
 			<div class="panel panel-red">
@@ -294,7 +273,7 @@
 						</div>
 						<div class="panel-footer">
 							<table>
-							<!-- Begining of main pannel of Forum -->
+								<!-- Begining of main pannel of Forum -->
 								<tr>
 									<td>Tweeter Tweets Go Here</td>
 								</tr>
@@ -397,7 +376,8 @@
 						<div class="panel-footer">
 							<iframe
 								src="https://www.flickr.com/photos/52209513@N03/15944683727/in/photolist-qhYEY8-q5U7WE-pCoGKj-q6K8n9-p8KbWR-qjz5cJ-pLnoTa-pRsbh6-pQgy99-qCDCnP-pebDR2-qjz29Q-pnReTV-oxDo45-ow18e4-pU1UpD-pQTfiY-q34S8o-ouUnaU-qjshUv-pTwC2g-qojoEt-qN3bjC-pDMt4w-qY1yhZ-qNxHFn-qbY7Dz-q6CFSW-q291MA-puLCWj-q7y2SD-pXL7eo-pnChbK-qrGsLW-pFciwv-qfpyNs-qFHCVz-pYFmg6-peGY8Q-r1fKoS-r5gYar-oRR46A-ofpEMw-pC8ax9-pUdYLN-qDQgZ3-qpsdCj-pdS9h5-qkvdDn-pZpGHL/player/"
-								name="frame2" id="frame2" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" onload=""
+								name="frame2" id="frame2" frameborder="0" marginwidth="0"
+								marginheight="0" scrolling="no" onload=""
 								allowtransparency="false" width="100%" height="300px">
 							</iframe>
 						</div>
