@@ -57,6 +57,216 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
+	
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'City');
+        data.addColumn('number', 'Count');
+        data.addRows([
+          ['${ city1sports }',${ city1sportsscore }],
+          ['${ city2sports }',${ city2sportsscore }],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Sport Comparision',
+        				is3D : true,
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div_sport'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'City');
+        data.addColumn('number', 'Count');
+        data.addRows([
+          ['${ city1res }',${ city1resscore }],
+          ['${ city2res }',${ city2resscore }],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Resturant Comparision',
+        				is3D : true,
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div_res'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'City');
+        data.addColumn('number', 'Count');
+        data.addRows([
+          ['${ city1job }',${ city1jobscore }],
+          ['${ city2job }',${ city2jobscore }],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Celebrity Comparision',
+        		       is3D : true,
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div_job'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'City');
+        data.addColumn('number', 'Count');
+        data.addRows([
+          ['${ city1cel }',${ city1celscore }],
+          ['${ city2cel }',${ city2celscore }],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Employee Comparision',
+        		       is3D : true,
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div_cel'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'City');
+        data.addColumn('number', 'Count');
+        data.addRows([
+          ['${ city1edu }',${ city1eduscore }],
+          ['${ city2edu }',${ city2eduscore }],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Education Comparision',
+        		       is3D : true,
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div_edu'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'City');
+        data.addColumn('number', 'Count');
+        data.addRows([
+          ['${ city1cri }',${ city1criscore }],
+          ['${ city2cri }',${ city2criscore }],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Crime Comparision',
+        		       is3D : true,
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div_cri'));
+        chart.draw(data, options);
+      }
+    </script>
 
 	<div id="wrapper">
 
@@ -226,7 +436,12 @@
 					</div>
 
 				</div>
-				graphics
+				<div id="chart_div_sport"></div>
+				<div id="chart_div_res"></div>
+				<div id="chart_div_job"></div>
+				<div id="chart_div_cel"></div>
+				<div id="chart_div_edu"></div>
+				<div id="chart_div_cri"></div>
 			</div>
 
 
