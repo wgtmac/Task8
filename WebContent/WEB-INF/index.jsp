@@ -13,28 +13,36 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <!-- MetisMenu CSS -->
 <link href="resources/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+<link href="resources/bower_components/metisMenu/dist/metisMenu.min.css"
+	rel="stylesheet">
 
 <!-- Timeline CSS -->
 <link href="resources/dist/css/timeline.css" rel="stylesheet">
-
-<!-- Custom CSS -->
 <link href="resources/dist/css/sb-admin-2.css" rel="stylesheet">
 
 <!-- Morris Charts CSS -->
 <link href="resources/bower_components/morrisjs/morris.css" rel="stylesheet">
+<link href="resources/bower_components/morrisjs/morris.css"
+	rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link href="resources/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link
+	href="resources/bower_components/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script type="text/javascript" src="//js.maxmind.com/js/geoip.js">
+	
+</script>
 
 </head>
 
@@ -254,7 +262,7 @@
       </div>
     </div>
     <hr>
-    <p align="center">Team Hex | All Rights Reserved | Carnegie Mellon University Â© 2015<br>
+    <p align="center">Team Hex | All Rights Reserved | Carnegie Mellon University © 2015<br>
       Site developed by for educational purposes only</p>
     <!-- /#page-wrapper --> 
   </div>
@@ -276,5 +284,380 @@
 
 <!-- Custom Theme JavaScript --> 
 <script src="resources/dist/js/sb-admin-2.js"></script>
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation"
+			style="margin-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.do">Hello, we believe you
+					are in <font color="black"><script type="text/javascript">
+						var city = geoip_city() + ", " + geoip_region();
+						if (city.length <= 2) {
+							change = "an unknown cool place";
+							city = "";
+						}
+						if (typeof change === 'undefined') {
+							document.write(city);
+						} else {
+							document.write(change);
+						}
+					</script></font>
+				</a>
+			</div>
+
+
+			<!-- /.navbar-header -->
+
+			<!-- /.navbar-top-links -->
+
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+						<li><a href="index.do"><i class="fa fa-dashboard fa-fw"></i>
+								Cool-O-Meter Home</a></li>
+						<li><a href="#"><i class="fa fa-files-o fa-fw"></i> What
+								is Cool-O-Meter?</a></li>
+					</ul>
+					<br> <img src="resources/img/banner.png"
+						alt="social media banner" />
+				</div>
+				<!-- /.sidebar-collapse -->
+			</div>
+			<!-- /.navbar-static-side -->
+		</nav>
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Cool-O-Meter</h1>
+					<div class="alert alert-success alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-hidden="true">&times;</button>
+						Use our meter to find out how "cool" is your city compared to
+						another one. To learn about the rationale used <a href="about.do"
+							class="alert-link">click here</a>.
+					</div>
+				</div>
+			</div>
+
+			<c:choose>
+				<c:when test="${ (empty msg) }">
+				</c:when>
+				<c:otherwise>
+					<h3 style="color: blue">${msg}</h3>
+				</c:otherwise>
+			</c:choose>
+
+			<c:forEach var="error" items="${errors}">
+				<h3 style="color: red">${error}</h3>
+			</c:forEach>
+
+
+			<div class="panel panel-red">
+				<div class="panel-heading">
+					<h3 align="center">Set Up a Match!</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row" align="center">
+						<div class="col-lg-12" align="center">
+							<form role="form" method="post">
+								<datalist id="cities">
+									<c:forEach items="${cityList}" var="listValue">
+										<option value="${listValue}">
+									</c:forEach>
+								</datalist>
+								<table align="center">
+									<tr>
+										<td width="300px" align="center">
+											<div class="form-group">
+												<h4>Choose City 1</h4>
+												<input name="cities1" required class="form-control"
+													list="cities">
+												<script type="text/javascript">
+													//<![CDATA[
+													{
+														if (typeof change === 'undefined') {
+															document.forms[0].elements['cities1'].value = city;
+														} else {
+															document.forms[0].elements['cities1'].placeholder = "City, ST";
+														}
+													}
+													//]]>
+												</script>
+											</div>
+										</td>
+										<td width="200px" align="center">
+											<h3>
+												<font color="#F0AD4E">Versus</font>
+											</h3>
+										</td>
+										<td width="300px" align="center">
+											<div class="form-group">
+												<h4>Choose City 2</h4>
+												<input name="cities2" required class="form-control"
+													list="cities" placeholder="City, ST">
+										</td>
+									</tr>
+								</table>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12" align="center">
+						<h4>
+							<font color="#F0AD4E">Parameters to Compare</font>
+						</h4>
+						<div class="form-group">
+							<table>
+								<tr>
+									<td width="200"><label> <input type="checkbox"
+											name="sports" id="Parameters_1" value="sports" checked>
+											Sports
+									</label></td>
+									<td><label> <input type="checkbox"
+											name="restaurants" value="restaurants" id="Parameters_0"
+											checked> Restaurants & Nightlife
+									</label></td>
+								</tr>
+								<tr>
+									<td><label> <input type="checkbox"
+											name="employment" checked value="employment"
+											id="Parameters_2"> Jobs
+									</label></td>
+									<td><label> <input type="checkbox"
+											name="celebrity" checked value="celebrity" id="Parameters_3">
+											Celebrity Buzz
+									</label></td>
+								</tr>
+								<tr>
+									<td><label> <input type="checkbox"
+											name="education" checked value="education" id="Parameters_4">
+											Education
+									</label></td>
+									<td><label> <input type="checkbox" name="crime"
+											checked value="crime" id="Parameters_5"> Crime
+									</label></td>
+								</tr>
+							</table>
+						</div>
+						<!-- /.col-lg-6 (nested) -->
+						<hr>
+						<div class="row">
+							<div class="col-lg-12" align="center">
+								<div class="form-group">
+									<button type="submit" name="action" value="compare"
+										class="btn btn-danger">
+										<h1>GO!</h1>
+									</button>
+									</form>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- /.row (nested) -->
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- /.panel -->
+
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<div class="alert alert-warning alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-hidden="true">&times;</button>
+						<table>
+							<tr>
+								<td>To change the city, type it here: &nbsp;</td>
+								<td>
+									<div class="input-group custom-search-form">
+										<input type="text" id="cityChange" list="cities"
+											class="form-control" placeholder="City, ST"> <span
+											class="input-group-btn">
+											<button class="btn btn-default" type="button">
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-3 col-md-3">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-3">
+									<i class="fa fa-comments fa-5x"></i>
+								</div>
+								<div class="col-xs-9 text-right">
+									<div class="huge">The buzz</div>
+									<div>
+										The most recent tweets about <br>
+										<script type="text/javascript">
+											if (typeof change === 'undefined') {
+												document.write(city);
+											} else {
+												document.write(change);
+											}
+										</script>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer">
+							<table>
+							<!-- Begining of main pannel of Forum -->
+								<tr>
+									<td>Tweeter Tweets Go Here</td>
+								</tr>
+								<tr>
+									<td>Tweeter Tweets Go Here</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-3">
+									<i class="fa fa-users fa-5x"></i>
+								</div>
+								<div class="col-xs-9 text-right">
+									<div class="huge">Community Forum</div>
+									<div>
+										Ask and anwswer questions about<br>
+										<script type="text/javascript">
+											if (typeof change === 'undefined') {
+												document.write(city);
+											} else {
+												document.write(change);
+											}
+										</script>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Begining of main pannel of Forum -->
+						<div class="panel-footer">
+							<table>
+								<!-- Method API to display Questions -->
+								<tr>
+									<td><strong>{Flicker_user}: </strong> {Question 1}</td>
+								</tr>
+								<tr>
+									<table>
+										<tr>
+											<!-- Method API to display Answer of UserID of Q1 -->
+											<td><strong>&nbsp; &nbsp; &nbsp;
+													{Flicker_user}: </strong> {Answer 1.1}</td>
+										</tr>
+										<tr>
+											<td><strong>&nbsp; &nbsp; &nbsp;
+													{Flicker_user}: </strong> {Answer 1.2}</td>
+										</tr>
+									</table>
+								</tr>
+
+								<tr>
+									<td><strong>{Flicker_user}: </strong> {Question 2}</td>
+								</tr>
+								<tr>
+									<table>
+										<tr>
+											<td><strong>&nbsp; &nbsp; &nbsp;
+													{Flicker_user}: </strong> {Answer 2.1}</td>
+										</tr>
+										<tr>
+											<td><strong>&nbsp; &nbsp; &nbsp;
+													{Flicker_user}: </strong> {Answer 2.2}</td>
+										</tr>
+									</table>
+								</tr>
+							</table>
+						</div>
+						<!-- End of main pannel of Forum -->
+
+					</div>
+				</div>
+				<!-- /.col-lg-6 -->
+
+				<div class="col-lg-3 col-md-3">
+					<div class="panel panel-green">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-3">
+									<i class="fa fa-image fa-5x"></i>
+								</div>
+								<div class="col-xs-9 text-right">
+									<div class="huge">Take a look!</div>
+									<div>
+										Flicker pics related to <br>
+										<script type="text/javascript">
+											if (typeof change === 'undefined') {
+												document.write(city);
+											} else {
+												document.write(change);
+											}
+										</script>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer">
+							<iframe
+								src="https://www.flickr.com/photos/52209513@N03/15944683727/in/photolist-qhYEY8-q5U7WE-pCoGKj-q6K8n9-p8KbWR-qjz5cJ-pLnoTa-pRsbh6-pQgy99-qCDCnP-pebDR2-qjz29Q-pnReTV-oxDo45-ow18e4-pU1UpD-pQTfiY-q34S8o-ouUnaU-qjshUv-pTwC2g-qojoEt-qN3bjC-pDMt4w-qY1yhZ-qNxHFn-qbY7Dz-q6CFSW-q291MA-puLCWj-q7y2SD-pXL7eo-pnChbK-qrGsLW-pFciwv-qfpyNs-qFHCVz-pYFmg6-peGY8Q-r1fKoS-r5gYar-oRR46A-ofpEMw-pC8ax9-pUdYLN-qDQgZ3-qpsdCj-pdS9h5-qkvdDn-pZpGHL/player/"
+								name="frame2" id="frame2" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" onload=""
+								allowtransparency="false" width="100%" height="300px">
+							</iframe>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- /.row -->
+			</div>
+			<!-- /.following closes wrapper -->
+		</div>
+		<hr>
+		<p align="center">
+			Team Hex | All Rights Reserved | Carnegie Mellon University &copy;
+			2015<br> Site developed by for educational purposes only
+		</p>
+		<!-- /#page-wrapper -->
+	</div>
+	<!-- /#wrapper -->
+	</div>
+	<!-- jQuery -->
+	<script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script
+		src="resources/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+	<!-- Morris Charts JavaScript -->
+	<script src="resources/bower_components/raphael/raphael-min.js"></script>
+	<script src="resources/bower_components/morrisjs/morris.min.js"></script>
+	<script src="resources/js/morris-data.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="resources/dist/js/sb-admin-2.js"></script>
 </body>
 </html>
