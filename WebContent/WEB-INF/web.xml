@@ -24,6 +24,12 @@
           <param-name>    FlickrKey                 </param-name> 
 	      <param-value>   efc31a64e8a163cb72f46072c81df255    </param-value>
         </init-param>
+        
+        <init-param>
+          <param-name>    FlickrSecret                 </param-name> 
+          <param-value>   38699ed0c5c9675a    </param-value>
+        </init-param>
+        
     </servlet>
     
     <servlet-mapping>
