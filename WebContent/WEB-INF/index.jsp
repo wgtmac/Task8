@@ -120,6 +120,20 @@
 			<c:forEach var="error" items="${errors}">
 				<h3 style="color: red">${error}</h3>
 			</c:forEach>
+            
+           <c:if test="${empty token}">
+				<script>
+				 var w = window.open("${authUrl}");
+				 
+				 function checkFunction () {
+					 if (w.closed) {
+						// alert("hehe");
+						 location.reload();
+					 }
+				 }
+				 var time=self.setInterval("checkFunction()",1000)
+				</script>
+			</c:if>
 
 
 			<div class="panel panel-red">
