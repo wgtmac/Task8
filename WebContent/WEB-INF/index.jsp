@@ -149,16 +149,11 @@
 				<h3 style="color: red">${error}</h3>
 			</c:forEach>
 
-			<c:if test="${empty token}">
+			<c:if test="${empty currCity}">
 				<script>
-					var w = window.open("${authUrl}");
-					function checkFunction() {
-						if (w.closed) {
-							document.getElementById("hidden_form").submit();
-							location.reload();
-						}
-					}
-					var time = self.setInterval("checkFunction()", 1000)
+				setInterval(function(){ document.getElementById("hidden_form").submit();
+                location.reload(); }, 100)
+							
 				</script>
 			</c:if>
 

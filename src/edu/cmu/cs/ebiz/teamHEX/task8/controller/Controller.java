@@ -73,10 +73,10 @@ public class Controller extends HttpServlet {
 			return;
 		}
 		
-		if (nextPage.contains("://")) {
-			response.sendRedirect(nextPage);
-			return;
-		}
+//		if (nextPage.contains("://")) {
+//			response.sendRedirect(nextPage);
+//			return;
+//		}
 
 		if (nextPage.endsWith(".do")) {
 			response.sendRedirect(nextPage);
