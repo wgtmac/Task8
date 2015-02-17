@@ -92,7 +92,7 @@
 					<script type="text/javascript">
 						//<![CDATA[
 						{
-							document.forms[0].elements['hidden_city'].value = city;
+							document.forms[0].elements['hidden_city'].value = "oklahoma";
 						}
 						//]]>
 					</script>
@@ -178,11 +178,15 @@
 											<div class="form-group">
 												<h4>Choose City 1</h4>
 												<input name="cities1" required class="form-control"
-													list="cities" placeholder ="City, ST">
+													list="cities">
 												<script type="text/javascript">
 													//<![CDATA[
 													{
-															document.forms[1].elements['cities1'].value = city;
+														if (typeof change === 'undefined') {
+															document.forms[0].elements['cities1'].value = city;
+														} else {
+															document.forms[0].elements['cities1'].placeholder = "City, ST";
+														}
 													}
 													//]]>
 												</script>
@@ -270,7 +274,7 @@
 							aria-hidden="true">&times;</button>
 						<table>
 							<tr>
-								<td>See what's going on in your city! To change the city, type it here: &nbsp;</td>
+								<td>To change the city, type it here: &nbsp;</td>
 								<td>
 									<div class="input-group custom-search-form">
 										<form method="post">
@@ -293,7 +297,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-lg-2 col-md-2">
+				<div class="col-lg-3 col-md-3">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<div class="row">
@@ -301,9 +305,9 @@
 									<i class="fa fa-comments fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class="huge">Tweets</div>
+									<div class="huge">The buzz</div>
 									<div>
-										Trendy hashtags in<br> <strong>#${ currCity }</strong>
+										The most recent tweets about <br> ${ currCity }
 										<script type="text/javascript">
 											// 											if (typeof change === 'undefined') {
 											// 												document.write(city);
@@ -327,7 +331,7 @@
 					</div>
 				</div>
 
-				<div class="col-lg-5 col-md-5">
+				<div class="col-lg-6 col-md-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<div class="row">
@@ -337,8 +341,7 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Community Forum</div>
 									<div>
-										Ask and anwswer questions about <strong>${ currCity }</strong><br>
-										(Requires Flicker/Yahoo account)
+										Ask and anwswer questions about<br> ${ currCity }
 										<script type="text/javascript">
 											// 											if (typeof change === 'undefined') {
 											// 												document.write(city);
@@ -394,7 +397,7 @@
 				</div>
 				<!-- /.col-lg-6 -->
 
-				<div class="col-lg-5 col-md-5">
+				<div class="col-lg-3 col-md-3">
 					<div class="panel panel-green">
 						<div class="panel-heading">
 							<div class="row">
@@ -404,7 +407,7 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Take a look!</div>
 									<div>
-										Flicker pics of or about<br> <strong>#${ currCity }</strong>
+										Flicker pics related to <br> ${ currCity }
 										<script type="text/javascript">
 											// 											if (typeof change === 'undefined') {
 											// 												document.write(city);

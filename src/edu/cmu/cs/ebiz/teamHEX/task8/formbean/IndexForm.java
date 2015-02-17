@@ -172,12 +172,5 @@ public class IndexForm extends FormBean {
 		}
 		return ret;
 	}
-	
-	
-/*	public List<String> cityList() {
-		CSVReader reader = new CSVReader(new FileReader("cities.csv"), ',', '"', 1);
-	}*/
-	
-	
 
 }
