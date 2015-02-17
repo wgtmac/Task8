@@ -85,9 +85,7 @@
 
         // Set chart options
         var options = {'title':'Sport Related Tweets Percentage',
-        				is3D : true/* ,
-                       'width':400,
-                       'height':300 */};
+        				is3D : true};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div_sport'));
@@ -112,8 +110,8 @@
     	  
     	  var data = google.visualization.arrayToDataTable([
     	                                                    ["city", "Number of tweets", { role: "style" } ],
-    	                                                    ['${ city1res }', ${ city1resscore }, "#e0440e"],
-    	                                                    ['${ city2res }', ${ city2resscore }, "#3366CC"]
+    	                                                    ['${ city1res }', ${ city1resscore }, "#3366CC"],
+    	                                                    ['${ city2res }', ${ city2resscore }, "#e0440e"]
     	                                                  ]);
 
     	                                                  var view = new google.visualization.DataView(data);
@@ -124,20 +122,9 @@
     	                                                                     role: "annotation" },
     	                                                                   2]);
 
-        // Create the data table.
-      /*   var data = new google.visualization.DataTable();
-        data.addColumn('string', 'City');
-        data.addColumn('number', 'Count');
-        data.addRows([
-          ['${ city1res }',${ city1resscore }],
-          ['${ city2res }',${ city2resscore }],
-        ]); */
-
         // Set chart options
         var options = {'title':'',
-        				is3D : true/* ,
-                       'width':400,
-                       'height':300 */};
+        				is3D : true};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.BarChart(document.getElementById('chart_div_res'));
@@ -163,8 +150,8 @@
         
         var data = google.visualization.arrayToDataTable([
     	                                                    ["city", "Number of tweets", { role: "style" } ],
-    	                                                    ['${ city1cel }', ${ city1celscore }, "#e0440e"],
-    	                                                    ['${ city2cel }', ${ city2celscore }, "#3366CC"]
+    	                                                    ['${ city1cel }', ${ city1celscore }, "#3366CC"],
+    	                                                    ['${ city2cel }', ${ city2celscore }, "#e0440e"]
     	                                                  ]);
 
     	                                                  var view = new google.visualization.DataView(data);
@@ -283,8 +270,8 @@
         
         var data = google.visualization.arrayToDataTable([
     	                                                    ["city", "Number of tweets", { role: "style" } ],
-    	                                                    ['${ city1cri }', ${ city1criscore }, "#e0440e"],
-    	                                                    ['${ city2cri }', ${ city2criscore }, "#3366CC"]
+    	                                                    ['${ city1cri }', ${ city1criscore }, "#3366CC"],
+    	                                                    ['${ city2cri }', ${ city2criscore }, "#e0440e"]
     	                                                  ]);
 
     	                                                  var view = new google.visualization.DataView(data);
@@ -389,7 +376,9 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-12" align="center">
-							<h4>The People have Spoken:</h4>
+							<h4>
+								<font color="grey">The People have Spoken:</font>
+							</h4>
 							<p class="affix">
 							<table>
 
@@ -399,8 +388,8 @@
 									<c:otherwise>
 										<tr>
 											<td><h4>
-													<font color=""#F0AD4E">Crime</font> is a higher concern for
-													people in <font color="red">${ crime }.<h4></font></td>
+													Crime is a higher concern for people in <font color="red">${ crime }.</font>
+													<h4></td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
@@ -470,7 +459,6 @@
 										</tr>
 									</c:otherwise>
 								</c:choose>
-
 							</table>
 							</p>
 							<!-- /.col-lg-6 (nested) -->
@@ -569,57 +557,27 @@
 
 						<div class="row">
 
-							<div class="col-lg-3 col-md-3">
-								<div class="panel panel-green">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-comments fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<h4>${ city1 }'sTrends</h4>
-											</div>
-										</div>
-									</div>
-									<div class="panel-footer">
-										<table>
-											<c:forEach var="hashtag" items="${trend1}">
-												<tr>
-													<td>#${hashtag}</td>
-												</tr>
-											</c:forEach>
-										</table>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-lg-5 col-md-5">
+							<div class="col-lg-2 col-md-2">
 								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<div class="row">
 											<div class="col-xs-3">
-												<i class="fa fa-users fa-5x"></i>
+												<i class="fa fa-comments fa-5x"></i>
 											</div>
 											<div class="col-xs-9 text-right">
-												<h4>What do you think about the results?</h4>
-												<div>
-													Comments are displayed for each set of results.<br>Everytime
-													someone runs this match, they will see your comments.
-												</div>
+												<h4>${ city1 }'s &nbsp; Trends</h4>
 											</div>
 										</div>
 									</div>
 									<div class="panel-footer">
-
-										<div class="fb-comments"
-											data-href="http://www.teamhex.tk/${city1.hashCode() + city2.hashCode()}/comments "
-											data-numposts="5" data-colorscheme="light"></div>
-
+										<c:forEach var="hashtag" items="${trend1}">
+													#${hashtag}<br>
+										</c:forEach>
 									</div>
 								</div>
 							</div>
 
-							<div class="col-lg-3 col-md-3">
+							<div class="col-lg-2 col-md-2">
 								<div class="panel panel-danger">
 									<div class="panel-heading">
 										<div class="row">
@@ -627,94 +585,63 @@
 												<i class="fa fa-comments fa-5x"></i>
 											</div>
 											<div class="col-xs-9 text-right">
-												<h4>${ city2 }'sTrends</h4>
+												<h4>${ city2 }'s &nbsp; Trends</h4>
 											</div>
 										</div>
 									</div>
 									<div class="panel-footer">
-										<table>
-											<c:forEach var="hashtag" items="${trend2}">
-												<tr>
-													<td>#${hashtag}</td>
-												</tr>
-											</c:forEach>
-										</table>
+										<c:forEach var="hashtag" items="${trend2}">
+													#${hashtag}<br>
+										</c:forEach>
 									</div>
 								</div>
 							</div>
-							<!-- /.col-lg-6 -->
-							<!-- /.row -->
-						</div>
-						<!-- /dismiss button-->
-					</div>
 
-					<!-- Flicker dissmisable box begins -->
-					<div class="alert alert-default alert-dismissable">
-						<button type="button" class="close" data-dismiss="alert"
-							aria-hidden="true">&times;</button>
-						<div class="row">
-							<h4>&nbsp; &nbsp; See it for yourself</h4>
 
-							<div class="col-lg-6 col-md-6">
-								<div class="panel panel-green">
+							<div class="col-lg-4 col-md-4">
+								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<div class="row">
 											<div class="col-xs-3">
-												<i class="fa fa-image fa-5x"></i>
+												<i class="fa fa-comments fa-5x"></i>
 											</div>
 											<div class="col-xs-9 text-right">
-												<h4>${city1}'sPics</h4>
-												<div>Flicker's trends related to ${city1}</div>
+												<h4>${ city1 }'s &nbsp; Pictures on Flicker</h4>
 											</div>
 										</div>
 									</div>
 									<div class="panel-footer">
-										<table>
-											<c:forEach var="pic1" items="${flickrpic1}">
-												<tr>
-													<td align="center"><a href="${pic1}" target="new">
-															<img src="${pic1}" alt="${city1} Panoramic">
-													</a><br> <br></td>
-												</tr>
-											</c:forEach>
-										</table>
+										Flicker Carousel
 									</div>
 								</div>
 							</div>
 
-							<div class="col-lg-6 col-md-6">
+
+							<div class="col-lg-4 col-md-4">
 								<div class="panel panel-danger">
 									<div class="panel-heading">
 										<div class="row">
 											<div class="col-xs-3">
-												<i class="fa fa-image fa-5x"></i>
+												<i class="fa fa-comments fa-5x"></i>
 											</div>
 											<div class="col-xs-9 text-right">
-												<h4>${city2}'sPics</h4>
-												<div>Flicker's trends related to ${city2}</div>
+												<h4>${ city2 }'s &nbsp; Pictures on Flicker</h4>
 											</div>
 										</div>
 									</div>
 									<div class="panel-footer">
-										<table>
-											<c:forEach var="pic2" items="${flickrpic2}">
-												<tr>
-													<td align="center"><a href="${pic2}" target="new">
-															<img src="${pic2}" alt="${city2} Panoramic">
-													</a><br> <br></td>
-												</tr>
-											</c:forEach>
-										</table>
+										Flicker 2
 									</div>
 								</div>
 							</div>
 
+
 							<!-- /.col-lg-6 -->
 							<!-- /.row -->
 						</div>
-						<!-- /dismiss button-->
-
+						<!-- /next is dismiss button-->
 					</div>
+
 					<hr>
 					<p align="center">
 						Team Hex | All Rights Reserved | Carnegie Mellon University &copy;
