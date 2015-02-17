@@ -87,32 +87,118 @@
 		</nav>
 		<div id="page-wrapper">
 			<div class="row">
-				<div class="col-lg-12">
-					<h1 class="page-header">How does Cool-O-Meter</h1>
-					<div class="alert alert-default alert-dismissable">
+				<div class="col-lg-9">
+					<h1 class="page-header">How does Cool-O-Meter work?</h1>
+					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert"
 							aria-hidden="true">&times;</button>
-						Our tool is based on Web Service APIs from Twitter, Flicker and
-						Facebook. All you need to know is that these companies have built
-						methods of communication (APIs) so that they can make their own
-						capabilities available to a wider audience through the Internet.
-						Our tool requests data to these companies using those APIs and
-						performs an analysis of the data based on the following criteria:
+						&#8226; Our tool is based on Web Service APIs from Twitter,
+						Flicker and Facebook. <br> &#8226; All you need to know is
+						that these companies have built methods of communication (APIs) so
+						that other web services (us) can make use of their capabilities.<br>
+						&#8226; Our tool requests data to them and performs an analysis of
+						the social trends received from twitter.<br> &#8226; Please
+						note that the analytics presented are exclusively based on the
+						latest "buzz" only. <br>
 					</div>
 				</div>
 			</div>
+			<!-- /.row -->
 
-
-				<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-9">
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4>Criteria for the Parameters Compared</h4>
+						</div>
+						<!-- .panel-heading -->
+						<div class="panel-body">
+							<div class="panel-group" id="accordion">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion"
+												href="#collapseOne">Sports</a>
+										</h4>
+									</div>
+									<div id="collapseOne" class="panel-collapse collapse in">
+										<div class="panel-body">Sports are compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion"
+												href="#collapseTwo">Jobs</a>
+										</h4>
+									</div>
+									<div id="collapseTwo" class="panel-collapse collapse">
+										<div class="panel-body">Jobs are compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion"
+												href="#collapseThree">Education</a>
+										</h4>
+									</div>
+									<div id="collapseThree" class="panel-collapse collapse">
+										<div class="panel-body">Education is compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+									</div>
+								</div>
+																<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion"
+												href="#collapseFour">Restaurants & Nightlife</a>
+										</h4>
+									</div>
+									<div id="collapseFour" class="panel-collapse collapse">
+										<div class="panel-body">Restaurants & Nightlife is compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+									</div>
+								</div>
+																<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion"
+												href="#collapseFive">Celebrities and VIP Buzz</a>
+										</h4>
+									</div>
+									<div id="collapseFive" class="panel-collapse collapse">
+										<div class="panel-body">Celebrities and VIP Buzz is compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+									</div>
+								</div>
+																<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion"
+												href="#collapseSix">Crime</a>
+										</h4>
+									</div>
+									<div id="collapseSix" class="panel-collapse collapse">
+										<div class="panel-body">Crime is compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- .panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
 			</div>
-			<!-- /.following closes wrapper -->
+
+
 		</div>
-		<hr>
-		<p align="center">
-			Team Hex | All Rights Reserved | Carnegie Mellon University &copy;
-			2015<br> Site developed by for educational purposes only
-		</p>
-		<!-- /#page-wrapper -->
+		<!-- /.following closes wrapper -->
+	</div>
+	<hr>
+	<p align="center">
+		Team Hex | All Rights Reserved | Carnegie Mellon University &copy;
+		2015<br> Site developed by for educational purposes only
+	</p>
+	<!-- /#page-wrapper -->
 	</div>
 	<!-- /#wrapper -->
 	</div>
