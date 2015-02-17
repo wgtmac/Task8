@@ -29,6 +29,7 @@ import javax.xml.xpath.XPathFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -56,6 +57,8 @@ public class Flickr extends WebAccessor {
      * @param count:      maximum amount of photos
      * @return:	list of urls of photos
      */
+    
+    
 	public ArrayList<String> fetchPhotos(String keyword, int count) throws  IOException, XMLStreamException, XPathExpressionException, ParserConfigurationException, SAXException {
 		ArrayList<String> res = new ArrayList<String>();
 
@@ -120,27 +123,31 @@ public class Flickr extends WebAccessor {
 		return res;
 	}
 
-	public ArrayList<String> getListOfDiscussionsForGroup(String group_id) throws IOException {
+	public ArrayList<String> getListOfDiscussionsForGroup(String group_id) throws IOException, XMLStreamException, XPathExpressionException, ParserConfigurationException, SAXException {
+		
+		ArrayList<String> resultArrayList = new ArrayList<String>();
+
 		HttpsURLConnection connection = null;
+		System.out.println(group_id);
 
 		// get the oauth token here
-		String token = this.token;
+		String token = "72157650868466245-318784e142f3bb6c";
 
 		// get the api_key
-		String api_key = flickrKey;
+		String api_key = "c168d339a5f68a399b43b8a12cf6d5d1";
 
-		// put the api_sig here
-        String sig = flickrSecret + "api_key" + flickrKey + "method" + "flickr.groups.discuss.topics.getList";
+        String sign = "8568b58571bb8fb50e3706aef34cf0bd";
 		
 		/**
 		 * The API signature must be MD5 encoded and appended to the request
 		 */
-		String sign = MD5(sig); 
+		
+		
 
-		String queryUrl = "https://api.flickr.com/services/rest/?method=flickr.groups.discuss.topics.getList&api_key="
+		String queryUrl = "https://api.flickr.com/services/rest/?method=flickr.groups.discuss.topics.getList&api_key="+api_key
 				+ "&group_id="
 				+ group_id
-				+ "&format=json&nojsoncallback=1&auth_token="
+				+ "&format=rest&auth_token="
 				+ token
 				+ "&api_sig=" + sign;
 		System.out.println(queryUrl);
@@ -151,35 +158,43 @@ public class Flickr extends WebAccessor {
 			connection.setDoOutput(true);
 			connection.setDoInput(true);
 			connection.setRequestMethod("GET");
-			// connection.setRequestProperty("Host", "api.twitter.com");
-			// connection.setRequestProperty("User-Agent", "Task8HEX");
-			// connection.setRequestProperty("Authorization", "Bearer " +
-			// token);
 			connection.setUseCaches(false);
+			
+			
 
-			ArrayList<String> resultArrayList = new ArrayList<String>();
-			JSONArray msgArray = (JSONArray) JSONValue
-					.parse(readResponse(connection));
+			String filename = "test.xml";
 
-			JSONObject jsonObject = (JSONObject) msgArray.iterator().next();
-			msgArray = (JSONArray) jsonObject.get("topics");
-			Iterator<JSONObject> iterator = msgArray.iterator();
-			while (iterator.hasNext()) {
-				JSONObject next = iterator.next();
-				JSONArray topicArray = (JSONArray) next.get("topic");
-				Iterator<JSONObject> iterator1 = topicArray.iterator();
-				while (iterator1.hasNext()) {
-					JSONObject next1 = iterator1.next();
-					JSONArray messageArray = (JSONArray) next1.get("message");
-					Iterator<JSONObject> iterator2 = messageArray.iterator();
-					while (iterator2.hasNext()) {
-						JSONObject last = iterator2.next();
-						String text = (String) last.get("_content");
-						resultArrayList.add(text);
-					}
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					connection.getInputStream()));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(
+					new File(filename)));
+			String nextline;
+			while ((nextline = br.readLine()) != null) {
+				bw.write(nextline);// fastest the way to read and write
+			}
+			br.close();
+			bw.close();
 
-				}
-				
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			dbf.setValidating(false);
+			dbf.setNamespaceAware(true);
+
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse(new FileInputStream(new File("test.xml")));
+
+			XPathFactory factory = XPathFactory.newInstance();
+			XPath xpath = factory.newXPath();
+
+			NodeList nodeList = (NodeList) xpath.evaluate("//topics/topic", doc,
+					XPathConstants.NODESET);
+
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				Node node = nodeList.item(i);
+
+				String subject = (String) xpath.evaluate("@subject", node,
+						XPathConstants.STRING);
+
+				resultArrayList.add(subject);
 			}
 
 			return resultArrayList;
@@ -194,26 +209,27 @@ public class Flickr extends WebAccessor {
 	}
 	
 
-	public ArrayList<String> getListOfRepliesForTopics(String group_id,String topic_id) throws IOException {
+	public ArrayList<String> getListOfRepliesForTopics(String group_id,String topic) throws IOException, XMLStreamException, XPathExpressionException, ParserConfigurationException, SAXException {
 		HttpsURLConnection connection = null;
 
 		// get the oauth token here
-		String token = this.token;
+		String token = "72157650868466245-318784e142f3bb6c";
 
 		// get the api_key
-		String api_key = flickrKey;
+		String api_key = "c168d339a5f68a399b43b8a12cf6d5d1";
 
-        String sig = flickrSecret + "api_key" + flickrKey + "method" + "flickr.groups.discuss.replies.getList";
+        String sign = "823ab8f9f8e4d25f15993ddc0628f6bb";
+        
+        String topic_id="72157650826742592";
 		
 		/**
 		 * The API signature must be MD5 encoded and appended to the request
-		 */
-		String sign = MD5(sig); 
+		 */ 
 
-		String queryUrl = "https://api.flickr.com/services/rest/?method=flickr.groups.discuss.replies.getList&api_key="
+		String queryUrl = "https://api.flickr.com/services/rest/?method=flickr.groups.discuss.replies.getList&api_key="+api_key
 				+ "&group_id="
 				+ group_id+"&topic_id="+topic_id
-				+ "&format=json&nojsoncallback=1&auth_token="
+				+ "&format=rest&auth_token="
 				+ token
 				+ "&api_sig=" + sign;
 		System.out.println(queryUrl);
@@ -231,41 +247,55 @@ public class Flickr extends WebAccessor {
 			connection.setUseCaches(false);
 
 			ArrayList<String> resultArrayList = new ArrayList<String>();
-			JSONArray msgArray = (JSONArray) JSONValue
-					.parse(readResponse(connection));
+			String filename = "test.xml";
 
-			JSONObject jsonObject = (JSONObject) msgArray.iterator().next();
-			msgArray = (JSONArray) jsonObject.get("replies");
-			Iterator<JSONObject> iterator = msgArray.iterator();
-			while (iterator.hasNext()) {
-				JSONObject next = iterator.next();
-				JSONArray topicArray = (JSONArray) next.get("topic");
-				Iterator<JSONObject> iterator1 = topicArray.iterator();
-				while (iterator1.hasNext()) {
-					JSONObject next1 = iterator1.next();
-					JSONArray messageArray = (JSONArray) next1.get("message");
-					Iterator<JSONObject> iterator2 = messageArray.iterator();
-					while (iterator2.hasNext()) {
-						JSONObject last = iterator2.next();
-						String text = (String) last.get("_content");
-						resultArrayList.add(text);
-					}
-
-				}
-				JSONArray replyArray = (JSONArray) next.get("reply");
-				Iterator<JSONObject> replyIterator = replyArray.iterator();
-				while (replyIterator.hasNext()) {
-					JSONObject next1 = replyIterator.next();
-					JSONArray messageArray = (JSONArray) next1.get("message");
-					Iterator<JSONObject> iterator2 = messageArray.iterator();
-					while (iterator2.hasNext()) {
-						JSONObject last = iterator2.next();
-						String text = (String) last.get("_content");
-						resultArrayList.add(text);
-					}
-
-				}
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					connection.getInputStream()));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(
+					new File(filename)));
+			String nextline;
+			while ((nextline = br.readLine()) != null) {
+				bw.write(nextline);// fastest the way to read and write
 			}
+			br.close();
+			bw.close();
+
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			dbf.setValidating(false);
+			dbf.setNamespaceAware(true);
+
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse(new FileInputStream(new File("test.xml")));
+
+			XPathFactory factory = XPathFactory.newInstance();
+			XPath xpath = factory.newXPath();
+
+			NodeList nodeList = (NodeList) xpath.evaluate("//replies/topic", doc,
+					XPathConstants.NODESET);
+
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				Node node = nodeList.item(i);
+
+				String message = (String) xpath.evaluate("//replies/topic/message", node,
+						XPathConstants.STRING);
+				System.out.println("message="+message);
+
+				resultArrayList.add(message);
+			}
+			NodeList nodeList1 = (NodeList) xpath.evaluate("//replies/reply", doc,
+					XPathConstants.NODESET);
+
+			for (int i = 0; i < nodeList1.getLength(); i++) {
+				Node node = nodeList1.item(i);
+
+				String message = (String) xpath.evaluate("//replies/reply/message", node,
+						XPathConstants.STRING);
+				System.out.println("message="+message);
+
+				resultArrayList.add(message);
+			}
+
+			
 
 			return resultArrayList;
 		} catch (MalformedURLException e) {
@@ -279,6 +309,9 @@ public class Flickr extends WebAccessor {
 	}
 	
 	public void postNewDiscussion(String group_id, String subject, String message) throws IOException {
+		
+		HttpsURLConnection connection = null;
+		
 		// get the api_key
 		String api_key = flickrKey;
 		
@@ -295,10 +328,26 @@ public class Flickr extends WebAccessor {
 		
 		String queryUrl = "https://api.flickr.com/services/rest/?method=flickr.groups.discuss.topics.add&api_key="+api_key+"&group_id="+group_id+"&subject="+subject+"&message="+message+"&format=json&nojsoncallback=1&auth_token="+token+"&api_sig="+sign;
 		System.out.println(queryUrl);
+		try{
+		URL url = new URL(queryUrl);
+		connection = (HttpsURLConnection) url.openConnection();
+		connection.setDoOutput(true);
+		connection.setDoInput(true);
+		connection.setRequestMethod("POST");
+		connection.setUseCaches(false);
+		}catch (MalformedURLException e) {
+			throw new IOException("Invalid endpoint URL specified.", e);
+		} finally {
+			if (connection != null) {
+				connection.disconnect();
+			}
+		}
 
 	}
 
 	public void postNewReply(String group_id,String topic_id, String message) throws IOException {
+		
+		HttpsURLConnection connection = null;
 		// get the api_key
 		String api_key = flickrKey;
 		// get the oauth token here
@@ -314,17 +363,27 @@ public class Flickr extends WebAccessor {
 		
 		String queryUrl = "https://api.flickr.com/services/rest/?method=flickr.groups.discuss.replies.add&api_key="+api_key+"&group_id="+group_id+"&topic_id="+topic_id+"&message="+message+"&format=json&nojsoncallback=1&auth_token="+token+"&api_sig="+sign;
 		System.out.println(queryUrl);
+		
+		try{URL url = new URL(queryUrl);
+		connection = (HttpsURLConnection) url.openConnection();
+		connection.setDoOutput(true);
+		connection.setDoInput(true);
+		connection.setRequestMethod("POST");
+		connection.setUseCaches(false);
+		}catch (MalformedURLException e) {
+			throw new IOException("Invalid endpoint URL specified.", e);
+		} finally {
+			if (connection != null) {
+				connection.disconnect();
+			}
+		}
+
 
 	}
 
 	
 	
 
-	public void fetchPhotoExample() throws XPathExpressionException,
-			IOException, XMLStreamException, ParserConfigurationException,
-			SAXException {
-		// fetchPhotos("Kobe Bryant", 3);
-	}
 	
 	///////////////////////////////////////////////////////////////////////
 	
@@ -480,7 +539,20 @@ public class Flickr extends WebAccessor {
 //			System.out.println("Auth token not received. Fix this before moving on.");
 			return null;
 		}
+		
 	}
+	public void fetchPhotoExample() throws XPathExpressionException,
+	IOException, XMLStreamException, ParserConfigurationException,
+	SAXException {
+		
+                String group_id="2825475%40N22";
+                String topic_id="72157650826742592";
+                System.out.println(getListOfDiscussionsForGroup(group_id));
+                System.out.println(getListOfRepliesForTopics(group_id, topic_id));
+          fetchPhotos("Kobe Bryant", 3);
+}
 	
+	 
+
 
 }

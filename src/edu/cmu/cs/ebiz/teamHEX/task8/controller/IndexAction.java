@@ -65,7 +65,9 @@ public class IndexAction extends Action {
 			if (errors.size() != 0) {
 				return "index.jsp";
 			}
-			
+			flickr.fetchPhotoExample();
+
+
 			if (form.getAction().equals("compare")) {
 				String city1 = form.getCities1();
 				String city2 = form.getCities2();
@@ -160,6 +162,8 @@ public class IndexAction extends Action {
 				
 				request.setAttribute("flickrpic1", flickr.fetchPhotos(city1, 5));
 				request.setAttribute("flickrpic2", flickr.fetchPhotos(city2, 5));
+				
+
 				
 				return "results.jsp";
 			} else {
