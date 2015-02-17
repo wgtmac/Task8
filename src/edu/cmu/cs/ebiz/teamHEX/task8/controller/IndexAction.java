@@ -10,6 +10,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.xpath.XPathExpressionException;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 import org.xml.sax.SAXException;
@@ -37,8 +39,23 @@ public class IndexAction extends Action {
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
 		
+		/**
+		 * Get current city and state name from ip address
+		 * */
+		if (session.getAttribute("currCity") == null) {
+			System.out.println( request.getRemoteAddr());
+		//	Document doc = Jsoup.connect("http://www.geoplugin.net/xml.gp?ip=" + request.getRemoteAddr()).get();
+			session.setAttribute("currCity", "Pittsburgh");//doc.getElementsByTag("geoplugin_city").get(0).text());
+		//	session.setAttribute("currState", doc.getElementsByTag("geoplugin_region").get(0).text());				
+		}
 		
 		try {
+			
+			if (session.getAttribute("currCityPhoto") == null) {
+				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
+				session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
+			}
+			
 			if (session.getAttribute("token") == null) {
 				if (session.getAttribute("frob") == null) {
 					flickr.frob = flickr.getFrob();
@@ -166,10 +183,14 @@ public class IndexAction extends Action {
 
 				
 				return "results.jsp";
-			} else {
-				
+			} else if (form.getAction().equals("change")) {
+				session.setAttribute("currCity", form.getLocal());
+				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
+				session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
 				return "index.jsp";
-			}
+			} 
+			
+			return "index.jsp";
 		} catch (FormBeanException | IOException | XPathExpressionException | XMLStreamException | ParserConfigurationException | SAXException e) {
         	errors.add(e.getMessage());
         	return "index.jsp";

@@ -122,23 +122,30 @@ public class IndexForm extends FormBean {
 	
 	public List<String> getValidationErrors() {
 		List<String> errors = new ArrayList<String>();
-
-		if ((cities1 == null || cities1.length() == 0) || (cities2 == null || cities2.length() == 0)) {
-			errors.add("Both cities are required");
-		}
-		if ( (sports == null || sports.length() == 0) && (restaurants == null || restaurants.length() == 0) 
-				&& (employment == null || employment.length() == 0)	&& (celebrity == null || celebrity.length() == 0) 
-				&& (education == null || education.length() == 0) && (crime == null || crime.length() == 0)){
-			errors.add("At least one catogory for comparison is required");
-		}
-		if (action == null) {
-			errors.add("Button is required");
-		}
+		
+		if (!action.equals("compare") && !action.equals("change")) 
+			errors.add("Invalid button");
 		
 		if (errors.size() > 0)
 			return errors;
 		
-        if (!action.equals("compare") && !action.equals("change")) errors.add("Invalid button");
+		if (action.equals("compare"))  {
+			if ((cities1 == null || cities1.length() == 0) || (cities2 == null || cities2.length() == 0)) {
+				errors.add("Both cities are required");
+			}
+			if ( (sports == null || sports.length() == 0) && (restaurants == null || restaurants.length() == 0) 
+					&& (employment == null || employment.length() == 0)	&& (celebrity == null || celebrity.length() == 0) 
+					&& (education == null || education.length() == 0) && (crime == null || crime.length() == 0)){
+				errors.add("At least one catogory for comparison is required");
+			}
+			if (action == null) {
+				errors.add("Button is required");
+			}
+		} else {
+			if ((local == null || local.length() == 0)) {
+				errors.add("Your city name is required");
+			}
+		}
 
 		return errors;
 	}

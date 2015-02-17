@@ -12,13 +12,16 @@
 <title>Team Hex Web Service - Welcome</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <link
 	href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="resources/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+<link href="resources/bower_components/metisMenu/dist/metisMenu.min.css"
+	rel="stylesheet">
 <link href="resources/bower_components/metisMenu/dist/metisMenu.min.css"
 	rel="stylesheet">
 
@@ -27,19 +30,23 @@
 <link href="resources/dist/css/sb-admin-2.css" rel="stylesheet">
 
 <!-- Morris Charts CSS -->
-<link href="resources/bower_components/morrisjs/morris.css" rel="stylesheet">
+<link href="resources/bower_components/morrisjs/morris.css"
+	rel="stylesheet">
 <link href="resources/bower_components/morrisjs/morris.css"
 	rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="resources/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link
+	href="resources/bower_components/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 <link
 	href="resources/bower_components/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script
+	src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <script type="text/javascript" src="//js.maxmind.com/js/geoip.js">
 	
 </script>
@@ -47,8 +54,8 @@
 </head>
 
 <body>
-<div id="wrapper"> 
- 
+	<div id="wrapper">
+
 		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation"
 			style="margin-bottom: 0">
@@ -60,7 +67,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.do">Hello, we believe you
-					are in <font color="black"><script type="text/javascript">
+					are in <font color="black"> <script type="text/javascript">
 						var city = geoip_city() + ", " + geoip_region();
 						if (city.length <= 2) {
 							change = "an unknown cool place";
@@ -75,9 +82,27 @@
 				</a>
 			</div>
 
+			<!-- /.hidden form that auto submits -->
+			<div style="display: none;">
+				<iframe id="hidden_frame" name="hidden_frame"></iframe>
+
+				<form id="hidden_form" method="POST" action="toBeEdited"
+					target="hidden_frame">
+					<input type="text" name="hidden_city" />
+					<script type="text/javascript">
+						//<![CDATA[
+						{
+							document.forms[0].elements['hidden_city'].value = "oklahoma";
+						}
+						//]]>
+					</script>
+				</form>
+				<script type="text/javascript">
+					document.getElementById("hidden_form").submit();
+				</script>
+			</div>
 
 			<!-- /.navbar-header -->
-
 			<!-- /.navbar-top-links -->
 
 			<div class="navbar-default sidebar" role="navigation">
@@ -85,8 +110,8 @@
 					<ul class="nav" id="side-menu">
 						<li><a href="index.do"><i class="fa fa-dashboard fa-fw"></i>
 								Cool-O-Meter Home</a></li>
-						<li><a href="about.jsp"><i class="fa fa-files-o fa-fw"></i> What
-								is Cool-O-Meter?</a></li>
+						<li><a href="about.do"><i class="fa fa-files-o fa-fw"></i>
+								What is Cool-O-Meter?</a></li>
 					</ul>
 					<br> <img src="resources/img/banner.png"
 						alt="social media banner" />
@@ -103,7 +128,7 @@
 						<button type="button" class="close" data-dismiss="alert"
 							aria-hidden="true">&times;</button>
 						Use our meter to find out how "cool" is your city compared to
-						another one. To learn about the rationale used <a href="about.jsp"
+						another one. To learn about the rationale used <a href="about.do"
 							class="alert-link">click here</a>.
 					</div>
 				</div>
@@ -120,18 +145,16 @@
 			<c:forEach var="error" items="${errors}">
 				<h3 style="color: red">${error}</h3>
 			</c:forEach>
-            
-           <c:if test="${empty token}">
+
+			<c:if test="${empty token}">
 				<script>
-				 var w = window.open("${authUrl}");
-				 
-				 function checkFunction () {
-					 if (w.closed) {
-						// alert("hehe");
-						 location.reload();
-					 }
-				 }
-				 var time=self.setInterval("checkFunction()",1000)
+					var w = window.open("${authUrl}");
+					function checkFunction() {
+						if (w.closed) {
+							location.reload();
+						}
+					}
+					var time = self.setInterval("checkFunction()", 1000)
 				</script>
 			</c:if>
 
@@ -155,15 +178,11 @@
 											<div class="form-group">
 												<h4>Choose City 1</h4>
 												<input name="cities1" required class="form-control"
-													list="cities">
+													list="cities" placeholder = "City, ST">
 												<script type="text/javascript">
 													//<![CDATA[
 													{
-														if (typeof change === 'undefined') {
-															document.forms[0].elements['cities1'].value = city;
-														} else {
-															document.forms[0].elements['cities1'].placeholder = "City, ST";
-														}
+															document.forms[1].elements['cities1'].value = city;
 													}
 													//]]>
 												</script>
@@ -251,16 +270,20 @@
 							aria-hidden="true">&times;</button>
 						<table>
 							<tr>
-								<td>To change the city, type it here: &nbsp;</td>
+								<td>See what's going on in the city! To change the city, type it here: &nbsp;</td>
 								<td>
 									<div class="input-group custom-search-form">
-										<input type="text" id="cityChange" list="cities"
-											class="form-control" placeholder="City, ST"> <span
-											class="input-group-btn">
-											<button class="btn btn-default" type="button">
-												<i class="fa fa-search"></i>
-											</button>
-										</span>
+										<form method="post">
+											<span class="input-group-btn"> <input type="text"
+												id="cityChange" list="cities" class="form-control"
+												placeholder="City, ST" name="local">
+												<button class="btn btn-default" type="submit" name="action"
+													value="change">
+													<i class="fa fa-search"></i>
+												</button>
+											</span>
+
+										</form>
 									</div>
 								</td>
 							</tr>
@@ -270,7 +293,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-lg-3 col-md-3">
+				<div class="col-lg-2 col-md-2">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<div class="row">
@@ -278,15 +301,15 @@
 									<i class="fa fa-comments fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class="huge">The buzz</div>
+									<div class="huge">@ # !</div>
 									<div>
-										The most recent tweets about <br>
+										Latest trends in <br><strong>${ currCity }</strong>
 										<script type="text/javascript">
-											if (typeof change === 'undefined') {
-												document.write(city);
-											} else {
-												document.write(change);
-											}
+											// 											if (typeof change === 'undefined') {
+											// 												document.write(city);
+											// 											} else {
+											// 												document.write(change);
+											// 											}
 										</script>
 									</div>
 								</div>
@@ -294,19 +317,17 @@
 						</div>
 						<div class="panel-footer">
 							<table>
-							<!-- Begining of main pannel of Forum -->
-								<tr>
-									<td>Tweeter Tweets Go Here</td>
-								</tr>
-								<tr>
-									<td>Tweeter Tweets Go Here</td>
-								</tr>
+								<c:forEach var="hashtag" items="${currCityTrend}">
+									<tr>
+										<td>#${hashtag}</td>
+									</tr>
+								</c:forEach>
 							</table>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-lg-6 col-md-6">
+				<div class="col-lg-5 col-md-5">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<div class="row">
@@ -316,13 +337,13 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Community Forum</div>
 									<div>
-										Ask and anwswer questions about<br>
+										Ask and anwswer questions about<br><strong>${ currCity }</strong>
 										<script type="text/javascript">
-											if (typeof change === 'undefined') {
-												document.write(city);
-											} else {
-												document.write(change);
-											}
+											// 											if (typeof change === 'undefined') {
+											// 												document.write(city);
+											// 											} else {
+											// 												document.write(change);
+											// 											}
 										</script>
 									</div>
 								</div>
@@ -372,7 +393,7 @@
 				</div>
 				<!-- /.col-lg-6 -->
 
-				<div class="col-lg-3 col-md-3">
+				<div class="col-lg-5 col-md-5">
 					<div class="panel panel-green">
 						<div class="panel-heading">
 							<div class="row">
@@ -382,13 +403,13 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Take a look!</div>
 									<div>
-										Flicker pics related to <br>
+										Flicker pics from or about<br><strong>${ currCity }</strong>
 										<script type="text/javascript">
-											if (typeof change === 'undefined') {
-												document.write(city);
-											} else {
-												document.write(change);
-											}
+											// 											if (typeof change === 'undefined') {
+											// 												document.write(city);
+											// 											} else {
+											// 												document.write(change);
+											// 											}
 										</script>
 									</div>
 								</div>
@@ -397,8 +418,10 @@
 						<div class="panel-footer">
 							<iframe
 								src="https://www.flickr.com/photos/52209513@N03/15944683727/in/photolist-qhYEY8-q5U7WE-pCoGKj-q6K8n9-p8KbWR-qjz5cJ-pLnoTa-pRsbh6-pQgy99-qCDCnP-pebDR2-qjz29Q-pnReTV-oxDo45-ow18e4-pU1UpD-pQTfiY-q34S8o-ouUnaU-qjshUv-pTwC2g-qojoEt-qN3bjC-pDMt4w-qY1yhZ-qNxHFn-qbY7Dz-q6CFSW-q291MA-puLCWj-q7y2SD-pXL7eo-pnChbK-qrGsLW-pFciwv-qfpyNs-qFHCVz-pYFmg6-peGY8Q-r1fKoS-r5gYar-oRR46A-ofpEMw-pC8ax9-pUdYLN-qDQgZ3-qpsdCj-pdS9h5-qkvdDn-pZpGHL/player/"
-								name="frame2" id="frame2" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" onload=""
+								name="frame2" id="frame2" frameborder="0" marginwidth="0"
+								marginheight="0" scrolling="no" onload=""
 								allowtransparency="false" width="100%" height="300px">
+
 							</iframe>
 						</div>
 					</div>

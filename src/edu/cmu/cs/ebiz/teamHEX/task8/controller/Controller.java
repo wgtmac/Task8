@@ -18,7 +18,7 @@ public class Controller extends HttpServlet {
 		Model model = new Model(getServletConfig());
 
 		Action.add(new IndexAction(model));
-		Action.add(new Callback(model));
+		Action.add(new AboutAction(model));
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -281,7 +281,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.html">Hi, we believe you are
-					in <strong>{City}</strong>
+					in <strong>${ currCity }</strong>
 				</a>
 			</div>
 			<!-- /.navbar-header -->
