@@ -54,6 +54,20 @@
 </head>
 
 <body>
+    <div id="fb-root"></div>
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
 	<div id="wrapper">
 
 		<!-- Navigation -->
@@ -343,26 +357,10 @@
 						</div>
 						<!-- Begining of main pannel of Forum -->
 						<div class="panel-footer">
-							<table>
-								<!-- Method API to display Questions -->
-
-
-								<c:forEach var="obj1" items="${topics}">
-									<tr>
-										<td>${obj1}</td>
-									</tr>
-
-									<tr>
-										<c:forEach var="obj" items="${replies}">
-
-											<tr>
-												<td>${obj}</td>
-											</tr>
-										</c:forEach>
-									</tr>
-								</c:forEach>
-
-							</table>
+						
+						      <div class="fb-comments" data-href="http://www.teamhex.tk/${currCity.hashCode()}/qanda "
+                                 data-numposts="5" data-colorscheme="light"></div>
+						
 						</div>
 						<!-- End of main pannel of Forums -->
 
