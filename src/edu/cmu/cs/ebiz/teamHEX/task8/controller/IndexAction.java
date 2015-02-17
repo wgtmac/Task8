@@ -60,7 +60,7 @@ public class IndexAction extends Action {
 				//System.out.println(city);
 				if (session.getAttribute("currCityPhoto") == null) {
 					session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
-					session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
+					session.setAttribute("currCityTrend", new ArrayList<String>() {{add("Trend1");add("Trend2");}});//twitter.searchTrends((String) session.getAttribute("currCity")));
 					
 					ArrayList<String> topicList = new ArrayList<String>();
 					topicList=flickr.getListOfDiscussionsForGroup("2825475%40N22");

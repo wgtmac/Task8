@@ -77,25 +77,8 @@ public class Flickr extends WebAccessor {
 
 		writeRequest(connection, "");
 
-		String filename = "test.xml";
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(
-				connection.getInputStream()));
-		BufferedWriter bw = new BufferedWriter(new FileWriter(
-				new File(filename)));
-		String nextline;
-		while ((nextline = br.readLine()) != null) {
-			bw.write(nextline);// fastest the way to read and write
-		}
-		br.close();
-		bw.close();
-
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		dbf.setValidating(false);
-		dbf.setNamespaceAware(true);
-
-		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document doc = db.parse(new FileInputStream(new File("test.xml")));
+		InputStream rstream = connection.getInputStream();
+		Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rstream);
 
 		XPathFactory factory = XPathFactory.newInstance();
 		XPath xpath = factory.newXPath();
