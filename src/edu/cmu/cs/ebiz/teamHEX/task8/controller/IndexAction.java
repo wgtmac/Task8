@@ -57,40 +57,40 @@ public class IndexAction extends Action {
 					city = city.split(",")[0];
 				}
 				session.setAttribute("currCity", city);
-				//System.out.println(city);
+
 				if (session.getAttribute("currCityPhoto") == null) {
 					session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
 					session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
-				   return "index.do";
+				   return "index.jsp";
 				}
 			}
 			
-			if (session.getAttribute("currCityPhoto") == null && session.getAttribute("currCity") != null) {
-				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
-				session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
-			}
-			
-/*			if(session.getAttribute("token")!=null && session.getAttribute("topics")==null){
-				ArrayList<String> topicList = new ArrayList<String>();
-				topicList=flickr.getListOfDiscussionsForGroup("2825475%40N22");
-				ArrayList<String> topicDisplayList = new ArrayList<String>();
-				ArrayList<String> replyDisplayList = new ArrayList<String>();
-				for(int i=0;i<topicList.size();i++){
-					if(i==0){
-						replyDisplayList=flickr.getListOfRepliesForTopics("2825475%40N22", topicList.get(i));				
-					} else if(i%2==0){
-						replyDisplayList=flickr.getListOfRepliesForTopics("2825475%40N22", topicList.get(i));
-					}else{
-						topicDisplayList.add(topicList.get(i));	
-					}
-					session.setAttribute("replies", replyDisplayList);
-				}
-				System.out.println(topicDisplayList);
-				session.setAttribute("topics",topicDisplayList );
-				
-				
-			}
-*/			
+//			if (session.getAttribute("currCityPhoto") == null && session.getAttribute("currCity") != null) {
+//				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
+//				session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
+//			}
+//			
+//			if(session.getAttribute("token")!=null && session.getAttribute("topics")==null){
+//				ArrayList<String> topicList = new ArrayList<String>();
+//				topicList=flickr.getListOfDiscussionsForGroup("2825475%40N22");
+//				ArrayList<String> topicDisplayList = new ArrayList<String>();
+//				ArrayList<String> replyDisplayList = new ArrayList<String>();
+//				for(int i=0;i<topicList.size();i++){
+//					if(i==0){
+//						replyDisplayList=flickr.getListOfRepliesForTopics("2825475%40N22", topicList.get(i));				
+//					} else if(i%2==0){
+//						replyDisplayList=flickr.getListOfRepliesForTopics("2825475%40N22", topicList.get(i));
+//					}else{
+//						topicDisplayList.add(topicList.get(i));	
+//					}
+//					session.setAttribute("replies", replyDisplayList);
+//				}
+//				System.out.println(topicDisplayList);
+//				session.setAttribute("topics",topicDisplayList );
+//				
+//				
+//			}
+//			
 //			if (session.getAttribute("token") == null) {
 //				if (session.getAttribute("frob") == null) {
 //					flickr.frob = flickr.getFrob();
