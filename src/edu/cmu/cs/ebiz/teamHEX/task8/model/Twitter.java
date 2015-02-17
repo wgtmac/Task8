@@ -230,11 +230,11 @@ public class Twitter extends WebAccessor {
 	}
 
 	public int getCountOfSports (String city) throws IOException {
-		return getCount(city + " @espn", 1);
+		return getCount(city + " @espn OR @FOXSports", 1);
 	}
 	
 	public int getCountOfEducation (String city) throws IOException {
-		return getCount(city + " graduate", 1);
+		return getCount(city + " graduate OR university", 1);
 	}
 	
 	public int getCountOfCrime (String city) throws IOException {
@@ -242,17 +242,13 @@ public class Twitter extends WebAccessor {
 	}
 	
 	public int getCountOfJobs (String city) throws IOException {
-		return getCount(city + " jobs", 1);
+		return getCount(city + " jobs OR employment", 1);
 	}
 	
 	public int getCountOfRestaurants (String city) throws IOException {
 		return getCount(city + " restaurant OR pubs OR nightclubs OR food%3A)", 0);
 	}
-	
-	/**
-	 * NOTE:
-	 * this query is missing !
-	 * */
+
 	public int getCountOfCelebrity (String city) throws IOException {
 		return getCount(city + " mtv OR ftvdotcom OR tmz OR eNews OR bravomagazin OR thr OR deadline%3A)", 7);
 	}

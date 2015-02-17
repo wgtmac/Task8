@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.mybeans.form.FormBean;
 
+import edu.cmu.cs.ebiz.teamHEX.task8.model.Model;
+
 public class IndexForm extends FormBean {
 	private String cities1;
 	private String cities2;
@@ -58,24 +60,36 @@ public class IndexForm extends FormBean {
 		return action;
 	}
 
-	public void setCities1(String v) {
-		cities1 = v;
-		if (cities1 != null) {
-			v = v.trim();
-			if (v.indexOf(',') != -1) {
-				cities1 =  v.substring(0, v.indexOf(','));
+	public String transform(String str) {
+		if (str == null || str.trim().length() == 0) return "";
+		
+		str = str.trim();
+		if (str.indexOf(',') != -1) {
+			str = str.substring(0, str.indexOf(','));
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(Character.toUpperCase(str.charAt(0)));
+
+		for (int i = 1; i < str.length(); i++) {
+			if (str.charAt(i) != ' ') {
+				if (str.charAt(i - 1) == ' ') {
+					sb.append(' ');
+					sb.append(Character.toUpperCase(str.charAt(i)));
+				} else {
+					sb.append(Character.toLowerCase(str.charAt(i)));
+				}
 			}
-		} 
+		}
+		return sb.toString();
+	}
+	
+	public void setCities1(String v) {
+		cities1 = transform(v);
 	}
 
 	public void setCities2(String v) {
-		this.cities2 = v;
-		if (cities2 != null) {
-			v = v.trim();
-			if (v.indexOf(',') != -1) {
-				cities2 =  v.substring(0, v.indexOf(','));
-			}
-		} 
+		cities2 = transform(v);
 	}
 
 	public void setSports(String v) {
@@ -103,13 +117,7 @@ public class IndexForm extends FormBean {
 	}
 	
 	public void setLocal(String v) {
-		this.local = v;
-		if (local != null) {
-			v = v.trim();
-			if (v.indexOf(',') != -1) {
-				local =  v.substring(0, v.indexOf(','));
-			}
-		} 
+		local = transform(v);
 	}
 	
 	public void setAction(String v) {
@@ -133,6 +141,11 @@ public class IndexForm extends FormBean {
 			if ((cities1 == null || cities1.length() == 0) || (cities2 == null || cities2.length() == 0)) {
 				errors.add("Both cities are required");
 			}
+		
+			if (!Model.isCityExist(cities1) || !Model.isCityExist(cities2)) {
+				errors.add("Cities are not existing, please input again");
+			}
+			
 			if ( (sports == null || sports.length() == 0) && (restaurants == null || restaurants.length() == 0) 
 					&& (employment == null || employment.length() == 0)	&& (celebrity == null || celebrity.length() == 0) 
 					&& (education == null || education.length() == 0) && (crime == null || crime.length() == 0)){

@@ -85,9 +85,9 @@
 
         // Set chart options
         var options = {'title':'Sport Comparision',
-        				is3D : true,
+        				is3D : true/* ,
                        'width':400,
-                       'height':300};
+                       'height':300 */};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div_sport'));
@@ -108,24 +108,89 @@
       // instantiates the pie chart, passes in the data and
       // draws it.
       function drawChart() {
+    	  
+    	  
+    	  var data = google.visualization.arrayToDataTable([
+    	                                                    ["city", "count", { role: "style" } ],
+    	                                                    ['${ city1res }', ${ city1resscore }, "#e0440e"],
+    	                                                    ['${ city2res }', ${ city2resscore }, "#3366CC"]
+    	                                                  ]);
+
+    	                                                  var view = new google.visualization.DataView(data);
+    	                                                  view.setColumns([0, 1,
+    	                                                                   { calc: "stringify",
+    	                                                                     sourceColumn: 1,
+    	                                                                     type: "string",
+    	                                                                     role: "annotation" },
+    	                                                                   2]);
 
         // Create the data table.
-        var data = new google.visualization.DataTable();
+      /*   var data = new google.visualization.DataTable();
         data.addColumn('string', 'City');
         data.addColumn('number', 'Count');
         data.addRows([
           ['${ city1res }',${ city1resscore }],
           ['${ city2res }',${ city2resscore }],
-        ]);
+        ]); */
 
         // Set chart options
         var options = {'title':'Resturant Comparision',
-        				is3D : true,
+        				is3D : true/* ,
                        'width':400,
-                       'height':300};
+                       'height':300 */};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_res'));
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div_res'));
+        chart.draw(data, options);
+      }
+    </script>
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        
+        var data = google.visualization.arrayToDataTable([
+    	                                                    ["city", "count", { role: "style" } ],
+    	                                                    ['${ city1cel }', ${ city1celscore }, "#e0440e"],
+    	                                                    ['${ city2cel }', ${ city2celscore }, "#3366CC"]
+    	                                                  ]);
+
+    	                                                  var view = new google.visualization.DataView(data);
+    	                                                  view.setColumns([0, 1,
+    	                                                                   { calc: "stringify",
+    	                                                                     sourceColumn: 1,
+    	                                                                     type: "string",
+    	                                                                     role: "annotation" },
+    	                                                                   2]);
+        
+        /* var data = new google.visualization.DataTable();
+        data.addColumn('string', 'City');
+        data.addColumn('number', 'Count');
+        data.addRows([
+          ['${ city1job }',${ city1jobscore }],
+          ['${ city2job }',${ city2jobscore }],
+        ]); */
+
+        // Set chart options
+        var options = {'title':'Celebrity Comparision',
+        		       is3D : true/* ,
+                       'width':400,
+                       'height':300 */};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div_cel'));
         chart.draw(data, options);
       }
     </script>
@@ -154,48 +219,13 @@
         ]);
 
         // Set chart options
-        var options = {'title':'Celebrity Comparision',
-        		       is3D : true,
+        var options = {'title':'Employee Comparision',
+        		       is3D : true/* ,
                        'width':400,
-                       'height':300};
+                       'height':300 */};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div_job'));
-        chart.draw(data, options);
-      }
-    </script>
-
-	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-	<script type="text/javascript">
-
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'City');
-        data.addColumn('number', 'Count');
-        data.addRows([
-          ['${ city1cel }',${ city1celscore }],
-          ['${ city2cel }',${ city2celscore }],
-        ]);
-
-        // Set chart options
-        var options = {'title':'Employee Comparision',
-        		       is3D : true,
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_cel'));
         chart.draw(data, options);
       }
     </script>
@@ -225,9 +255,9 @@
 
         // Set chart options
         var options = {'title':'Education Comparision',
-        		       is3D : true,
+        		       is3D : true/* ,
                        'width':400,
-                       'height':300};
+                       'height':300 */};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div_edu'));
@@ -250,22 +280,37 @@
       function drawChart() {
 
         // Create the data table.
-        var data = new google.visualization.DataTable();
+        
+        var data = google.visualization.arrayToDataTable([
+    	                                                    ["city", "count", { role: "style" } ],
+    	                                                    ['${ city1cri }', ${ city1criscore }, "#e0440e"],
+    	                                                    ['${ city2cri }', ${ city2criscore }, "#3366CC"]
+    	                                                  ]);
+
+    	                                                  var view = new google.visualization.DataView(data);
+    	                                                  view.setColumns([0, 1,
+    	                                                                   { calc: "stringify",
+    	                                                                     sourceColumn: 1,
+    	                                                                     type: "string",
+    	                                                                     role: "annotation" },
+    	                                                                   2]);
+        
+        /* var data = new google.visualization.DataTable();
         data.addColumn('string', 'City');
         data.addColumn('number', 'Count');
         data.addRows([
           ['${ city1cri }',${ city1criscore }],
           ['${ city2cri }',${ city2criscore }],
-        ]);
+        ]); */
 
         // Set chart options
         var options = {'title':'Crime Comparision',
-        		       is3D : true,
-                       'width':400,
-                       'height':300};
+        		       is3D : true
+                       /* 'width':400,
+                       'height':300 */};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_cri'));
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div_cri'));
         chart.draw(data, options);
       }
     </script>
@@ -512,188 +557,190 @@
 							</div>
 						</div>
 					</div>
-					
 
-			<!-- Social dissmisable box begins -->
-			<div class="alert alert-info alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert"
-					aria-hidden="true">&times;</button>
-					<div class="panel-heading">
-									<h4>Social Buzz</h4>
-					</div>
-					
-				<div class="row">
 
-					<div class="col-lg-3 col-md-3">
-						<div class="panel panel-green">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-3">
-										<i class="fa fa-comments fa-5x"></i>
-									</div>
-									<div class="col-xs-9 text-right">
-										<h4>${ city1 }'sTrends</h4>
-									</div>
-								</div>
-							</div>
-							<div class="panel-footer">
-								<table>
-									<c:forEach var="hashtag" items="${trend1}">
-										<tr>
-											<td>#${hashtag}</td>
-										</tr>
-									</c:forEach>
-								</table>
-							</div>
+					<!-- Social dissmisable box begins -->
+					<div class="alert alert-info alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-hidden="true">&times;</button>
+						<div class="panel-heading">
+							<h4>Social Buzz</h4>
 						</div>
-					</div>
 
-					<div class="col-lg-5 col-md-5">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-3">
-										<i class="fa fa-users fa-5x"></i>
-									</div>
-									<div class="col-xs-9 text-right">
-										<h4>What do you think about the results?</h4>
-										<div>
-											Comments are displayed for each set of results.<br>Everytime
-											someone runs this match, they will see your comments.
+						<div class="row">
+
+							<div class="col-lg-3 col-md-3">
+								<div class="panel panel-green">
+									<div class="panel-heading">
+										<div class="row">
+											<div class="col-xs-3">
+												<i class="fa fa-comments fa-5x"></i>
+											</div>
+											<div class="col-xs-9 text-right">
+												<h4>${ city1 }'sTrends</h4>
+											</div>
 										</div>
 									</div>
-								</div>
-							</div>
-							<div class="panel-footer">
-
-								<div class="fb-comments"
-									data-href="http://www.teamhex.tk/${city1.hashCode() + city2.hashCode()}/comments "
-									data-numposts="5" data-colorscheme="light"></div>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-3">
-						<div class="panel panel-danger">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-3">
-										<i class="fa fa-comments fa-5x"></i>
-									</div>
-									<div class="col-xs-9 text-right">
-										<h4>${ city2 }'sTrends</h4>
+									<div class="panel-footer">
+										<table>
+											<c:forEach var="hashtag" items="${trend1}">
+												<tr>
+													<td>#${hashtag}</td>
+												</tr>
+											</c:forEach>
+										</table>
 									</div>
 								</div>
 							</div>
-							<div class="panel-footer">
-								<table>
-									<c:forEach var="hashtag" items="${trend2}">
-										<tr>
-											<td>#${hashtag}</td>
-										</tr>
-									</c:forEach>
-								</table>
+
+							<div class="col-lg-5 col-md-5">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										<div class="row">
+											<div class="col-xs-3">
+												<i class="fa fa-users fa-5x"></i>
+											</div>
+											<div class="col-xs-9 text-right">
+												<h4>What do you think about the results?</h4>
+												<div>
+													Comments are displayed for each set of results.<br>Everytime
+													someone runs this match, they will see your comments.
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel-footer">
+
+										<div class="fb-comments"
+											data-href="http://www.teamhex.tk/${city1.hashCode() + city2.hashCode()}/comments "
+											data-numposts="5" data-colorscheme="light"></div>
+
+									</div>
+								</div>
 							</div>
+
+							<div class="col-lg-3 col-md-3">
+								<div class="panel panel-danger">
+									<div class="panel-heading">
+										<div class="row">
+											<div class="col-xs-3">
+												<i class="fa fa-comments fa-5x"></i>
+											</div>
+											<div class="col-xs-9 text-right">
+												<h4>${ city2 }'sTrends</h4>
+											</div>
+										</div>
+									</div>
+									<div class="panel-footer">
+										<table>
+											<c:forEach var="hashtag" items="${trend2}">
+												<tr>
+													<td>#${hashtag}</td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- /.col-lg-6 -->
+							<!-- /.row -->
 						</div>
+						<!-- /dismiss button-->
 					</div>
-					<!-- /.col-lg-6 -->
-					<!-- /.row -->
+
+					<!-- Flicker dissmisable box begins -->
+					<div class="alert alert-default alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-hidden="true">&times;</button>
+						<div class="row">
+							<h4>&nbsp; &nbsp; See it for yourself</h4>
+
+							<div class="col-lg-6 col-md-6">
+								<div class="panel panel-green">
+									<div class="panel-heading">
+										<div class="row">
+											<div class="col-xs-3">
+												<i class="fa fa-image fa-5x"></i>
+											</div>
+											<div class="col-xs-9 text-right">
+												<h4>${city1}'sPics</h4>
+												<div>Flicker's trends related to ${city1}</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel-footer">
+										<table>
+											<c:forEach var="pic1" items="${flickrpic1}">
+												<tr>
+													<td align="center"><a href="${pic1}" target="new">
+															<img src="${pic1}" alt="${city1} Panoramic">
+													</a><br> <br></td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-6 col-md-6">
+								<div class="panel panel-danger">
+									<div class="panel-heading">
+										<div class="row">
+											<div class="col-xs-3">
+												<i class="fa fa-image fa-5x"></i>
+											</div>
+											<div class="col-xs-9 text-right">
+												<h4>${city2}'sPics</h4>
+												<div>Flicker's trends related to ${city2}</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel-footer">
+										<table>
+											<c:forEach var="pic2" items="${flickrpic2}">
+												<tr>
+													<td align="center"><a href="${pic2}" target="new">
+															<img src="${pic2}" alt="${city2} Panoramic">
+													</a><br> <br></td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div>
+								</div>
+							</div>
+
+							<!-- /.col-lg-6 -->
+							<!-- /.row -->
+						</div>
+						<!-- /dismiss button-->
+
+					</div>
+					<hr>
+					<p align="center">
+						Team Hex | All Rights Reserved | Carnegie Mellon University &copy;
+						2015<br> Site developed by for educational purposes only
+					</p>
+					<!-- /#page-wrapper -->
 				</div>
-				<!-- /dismiss button-->
+				<!-- /#wrapper -->
 			</div>
+			<!-- jQuery -->
+			<script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
 
-			<!-- Flicker dissmisable box begins -->
-			<div class="alert alert-default alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert"
-					aria-hidden="true">&times;</button>
-				<div class="row">
-					<h4>&nbsp; &nbsp; See it for yourself</h4>
+			<!-- Bootstrap Core JavaScript -->
+			<script
+				src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-					<div class="col-lg-6 col-md-6">
-						<div class="panel panel-green">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-3">
-										<i class="fa fa-image fa-5x"></i>
-									</div>
-									<div class="col-xs-9 text-right">
-										<h4>${city1}'sPics</h4>
-										<div>Flicker's trends related to ${city1}</div>
-									</div>
-								</div>
-							</div>
-							<div class="panel-footer">
-								<table>
-									<c:forEach var="pic1" items="${flickrpic1}">
-										<tr>
-											<td align="center"><a href="${pic1}" target="new"> <img
-													src="${pic1}" alt="${city1} Panoramic"></a><br> <br></td>
-										</tr>
-									</c:forEach>
-								</table>
-							</div>
-						</div>
-					</div>
+			<!-- Metis Menu Plugin JavaScript -->
+			<script
+				src="resources/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-					<div class="col-lg-6 col-md-6">
-						<div class="panel panel-danger">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-3">
-										<i class="fa fa-image fa-5x"></i>
-									</div>
-									<div class="col-xs-9 text-right">
-										<h4>${city2}'sPics</h4>
-										<div>Flicker's trends related to ${city2}</div>
-									</div>
-								</div>
-							</div>
-							<div class="panel-footer">
-								<table>
-									<c:forEach var="pic2" items="${flickrpic2}">
-										<tr>
-											<td align="center"><a href="${pic2}" target="new"> <img
-													src="${pic2}" alt="${city2} Panoramic"></a><br> <br></td>
-										</tr>
-									</c:forEach>
-								</table>
-							</div>
-						</div>
-					</div>
+			<!-- Morris Charts JavaScript -->
+			<script src="resources/bower_components/raphael/raphael-min.js"></script>
+			<script src="resources/bower_components/morrisjs/morris.min.js"></script>
+			<script src="resources/js/morris-data.js"></script>
 
-					<!-- /.col-lg-6 -->
-					<!-- /.row -->
-				</div>
-				<!-- /dismiss button-->
-
-			</div>
-			<hr>
-			<p align="center">
-				Team Hex | All Rights Reserved | Carnegie Mellon University  &copy; 2015<br>
-				Site developed by for educational purposes only
-			</p>
-			<!-- /#page-wrapper -->
-		</div>
-		<!-- /#wrapper -->
-	</div>
-	<!-- jQuery -->
-	<script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script
-		src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-	<!-- Metis Menu Plugin JavaScript -->
-	<script
-		src="resources/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-	<!-- Morris Charts JavaScript -->
-	<script src="resources/bower_components/raphael/raphael-min.js"></script>
-	<script src="resources/bower_components/morrisjs/morris.min.js"></script>
-	<script src="resources/js/morris-data.js"></script>
-
-	<!-- Custom Theme JavaScript -->
-	<script src="resources/dist/js/sb-admin-2.js"></script>
+			<!-- Custom Theme JavaScript -->
+			<script src="resources/dist/js/sb-admin-2.js"></script>
 </body>
 </html>
