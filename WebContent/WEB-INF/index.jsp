@@ -54,19 +54,20 @@
 </head>
 
 <body>
-    <div id="fb-root"></div>
-    <div id="fb-root"></div>
-    <script>
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id))
-                return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
+
+	<div id="fb-root"></div>
+	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
 	<div id="wrapper">
 
@@ -162,9 +163,10 @@
 
 			<c:if test="${empty currCity}">
 				<script>
-				setInterval(function(){ document.getElementById("hidden_form").submit();
-                location.reload(); }, 100)
-							
+					setInterval(function() {
+						document.getElementById("hidden_form").submit();
+						location.reload();
+					}, 100)
 				</script>
 			</c:if>
 
@@ -307,27 +309,15 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">@ # !</div>
 									<div>
-										Latest trends in <br>
-										<strong>${ currCity }</strong>
-										<script type="text/javascript">
-											// 											if (typeof change === 'undefined') {
-											// 												document.write(city);
-											// 											} else {
-											// 												document.write(change);
-											// 											}
-										</script>
+										Latest trends in <br> <strong>${ currCity }</strong>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="panel-footer">
-							<table>
-								<c:forEach var="hashtag" items="${currCityTrend}">
-									<tr>
-										<td>#${hashtag}</td>
-									</tr>
+									<c:forEach var="hashtag" items="${currCityTrend}">
+										#${hashtag}<br>
 								</c:forEach>
-							</table>
 						</div>
 					</div>
 				</div>
@@ -342,25 +332,17 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Community Forum</div>
 									<div>
-										Ask and anwswer questions about<br>
-										<strong>${ currCity }</strong>
-										<script type="text/javascript">
-											// 											if (typeof change === 'undefined') {
-											// 												document.write(city);
-											// 											} else {
-											// 												document.write(change);
-											// 											}
-										</script>
+										Ask and anwswer questions about <strong>${ currCity }</strong>. 
+										<br>This forum is displayed for ${ currCity } only.
 									</div>
 								</div>
 							</div>
 						</div>
 						<!-- Begining of main pannel of Forum -->
 						<div class="panel-footer">
-						
-						      <div class="fb-comments" data-href="http://www.teamhex.tk/${currCity.hashCode()}/qanda "
-                                 data-numposts="5" data-colorscheme="light"></div>
-						
+							<div class="fb-comments"
+								data-href="http://www.teamhex.tk/${currCity.hashCode()}/comments "
+								data-width="100%" data-numposts="5" data-colorscheme="light"></div>
 						</div>
 						<!-- End of main pannel of Forums -->
 
@@ -378,38 +360,49 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Take a look!</div>
 									<div>
-										Flicker pics from or about<br>
-										<strong>${ currCity }</strong>
+										Flicker pics from or about<br> <strong>${ currCity }</strong>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="panel-footer">
-
-							<div id="myCarousel" class="carousel slide">
-								<ol class="carousel-indicators">
-									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-									<li data-target="#myCarousel" data-slide-to="1"></li>
-									<li data-target="#myCarousel" data-slide-to="2"></li>
-									<li data-target="#myCarousel" data-slide-to="3"></li>
-									<li data-target="#myCarousel" data-slide-to="4"></li>
-								</ol>
-								<div class="carousel-inner">
-									<div class="item active">
-									
-									<c:forEach var="pic1" items="${currCityPhoto}">
-										<img src="${pic1}" alt="${city1} Panoramic">
+						<div class="panel-footer" align="center">
+							<table>
+								<tr height="400px" valign="top">
+									<td align="center" valign="top">
+										<div id="myCarousel" class="carousel slide">
+											<ol class="carousel-indicators">
+												<li data-target="#myCarousel" data-slide-to="0"
+													class="active"></li>
+												<li data-target="#myCarousel" data-slide-to="1"></li>
+												<li data-target="#myCarousel" data-slide-to="2"></li>
+												<li data-target="#myCarousel" data-slide-to="3"></li>
+												<li data-target="#myCarousel" data-slide-to="4"></li>
+											</ol>
+											<div class="carousel-inner">
+												<div class="item active">
+													<img src="${currCityPhoto.get(0)}" alt="${city1} Panoramic">
+												</div>
+												<div class="item">
+													<img src="${currCityPhoto.get(1)}" alt="${city1} Panoramic">
+												</div>
+												<div class="item">
+													<img src="${currCityPhoto.get(2)}" alt="${city1} Panoramic">
+												</div>
+												<div class="item">
+													<img src="${currCityPhoto.get(3)}" alt="${city1} Panoramic">
+												</div>
+												<div class="item">
+													<img src="${currCityPhoto.get(4)}" alt="${city1} Panoramic">
+												</div>
+											</div>
+											<a class="left carousel-control" href="#myCarousel"
+												data-slide="prev">&lsaquo;</a> <a
+												class="right carousel-control" href="#myCarousel"
+												data-slide="next">&rsaquo;</a>
 										</div>
-										<div class="item">
-									</c:forEach>								
-									</div>
-								</div>
-								<a class="left carousel-control" href="#myCarousel"
-									data-slide="prev">&lsaquo;</a> <a
-									class="right carousel-control" href="#myCarousel"
-									data-slide="next">&rsaquo;</a>
-							</div>
-
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>

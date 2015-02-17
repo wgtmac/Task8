@@ -84,7 +84,7 @@
         ]);
 
         // Set chart options
-        var options = {'title':'Sport Comparision',
+        var options = {'title':'Sport Related Tweets Percentage',
         				is3D : true/* ,
                        'width':400,
                        'height':300 */};
@@ -111,7 +111,7 @@
     	  
     	  
     	  var data = google.visualization.arrayToDataTable([
-    	                                                    ["city", "count", { role: "style" } ],
+    	                                                    ["city", "Number of tweets", { role: "style" } ],
     	                                                    ['${ city1res }', ${ city1resscore }, "#e0440e"],
     	                                                    ['${ city2res }', ${ city2resscore }, "#3366CC"]
     	                                                  ]);
@@ -134,7 +134,7 @@
         ]); */
 
         // Set chart options
-        var options = {'title':'Resturant Comparision',
+        var options = {'title':'',
         				is3D : true/* ,
                        'width':400,
                        'height':300 */};
@@ -162,7 +162,7 @@
         // Create the data table.
         
         var data = google.visualization.arrayToDataTable([
-    	                                                    ["city", "count", { role: "style" } ],
+    	                                                    ["city", "Number of tweets", { role: "style" } ],
     	                                                    ['${ city1cel }', ${ city1celscore }, "#e0440e"],
     	                                                    ['${ city2cel }', ${ city2celscore }, "#3366CC"]
     	                                                  ]);
@@ -184,7 +184,7 @@
         ]); */
 
         // Set chart options
-        var options = {'title':'Celebrity Comparision',
+        var options = {'title':'',
         		       is3D : true/* ,
                        'width':400,
                        'height':300 */};
@@ -219,7 +219,7 @@
         ]);
 
         // Set chart options
-        var options = {'title':'Employee Comparision',
+        var options = {'title':'Job Related Tweets Percentage',
         		       is3D : true/* ,
                        'width':400,
                        'height':300 */};
@@ -254,7 +254,7 @@
         ]);
 
         // Set chart options
-        var options = {'title':'Education Comparision',
+        var options = {'title':'Education Related Tweets Percentage',
         		       is3D : true/* ,
                        'width':400,
                        'height':300 */};
@@ -282,7 +282,7 @@
         // Create the data table.
         
         var data = google.visualization.arrayToDataTable([
-    	                                                    ["city", "count", { role: "style" } ],
+    	                                                    ["city", "Number of tweets", { role: "style" } ],
     	                                                    ['${ city1cri }', ${ city1criscore }, "#e0440e"],
     	                                                    ['${ city2cri }', ${ city2criscore }, "#3366CC"]
     	                                                  ]);
@@ -304,7 +304,7 @@
         ]); */
 
         // Set chart options
-        var options = {'title':'Crime Comparision',
+        var options = {'title':'',
         		       is3D : true
                        /* 'width':400,
                        'height':300 */};

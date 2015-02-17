@@ -131,7 +131,7 @@
 										</h4>
 									</div>
 									<div id="collapseOne" class="panel-collapse collapse in">
-										<div class="panel-body">Sports are compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+										<div class="panel-body">Sports are compared by looking at the number of tweets from ESPN OR FOXSports related to hashtag #Sports in your city.</div>
 									</div>
 								</div>
 								<div class="panel panel-default">
@@ -142,7 +142,7 @@
 										</h4>
 									</div>
 									<div id="collapseTwo" class="panel-collapse collapse">
-										<div class="panel-body">Jobs are compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+										<div class="panel-body">Jobs are compared by looking at the number of positive tweets related to hashtag #jobs OR #employment in your city.</div>
 									</div>
 								</div>
 								<div class="panel panel-default">
@@ -153,7 +153,7 @@
 										</h4>
 									</div>
 									<div id="collapseThree" class="panel-collapse collapse">
-										<div class="panel-body">Education is compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+										<div class="panel-body">Education is compared by looking at the number of positive tweets related to hashtag #graduate OR #university in your city.</div>
 									</div>
 								</div>
 																<div class="panel panel-default">
@@ -164,7 +164,7 @@
 										</h4>
 									</div>
 									<div id="collapseFour" class="panel-collapse collapse">
-										<div class="panel-body">Restaurants & Nightlife is compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+										<div class="panel-body">Restaurants & Nightlife is compared by looking at the number of positive tweets related to the hashtag #restaurant OR #pubs OR #nightclubs OR #food in your city.</div>
 									</div>
 								</div>
 																<div class="panel panel-default">
@@ -175,7 +175,7 @@
 										</h4>
 									</div>
 									<div id="collapseFive" class="panel-collapse collapse">
-										<div class="panel-body">Celebrities and VIP Buzz is compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+										<div class="panel-body">Celebrities and VIP Buzz is compared by looking at the number of  tweets from mtv OR ftvdotcom OR tmz OR eNews OR bravomagazin OR thr OR deadline about #celebrities in your city.</div>
 									</div>
 								</div>
 																<div class="panel panel-default">
@@ -186,7 +186,7 @@
 										</h4>
 									</div>
 									<div id="collapseSix" class="panel-collapse collapse">
-										<div class="panel-body">Crime is compared by looking at the number of positive tweets related to the hashtag #jobs in your city.</div>
+										<div class="panel-body">Crime is compared by looking at the number of tweets related to the hashtag #crime in your city.</div>
 									</div>
 								</div>
 							</div>
