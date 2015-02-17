@@ -45,6 +45,8 @@
 </head>
 
 <body>
+
+<div id="fb-root"></div>
 	<div id="fb-root"></div>
 	<script>
 		(function(d, s, id) {
@@ -57,9 +59,9 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
-	
+
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+	<script type="text/javascript">
 
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
@@ -92,9 +94,9 @@
         chart.draw(data, options);
       }
     </script>
-    
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
 
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
@@ -127,9 +129,9 @@
         chart.draw(data, options);
       }
     </script>
-    
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
 
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
@@ -162,9 +164,9 @@
         chart.draw(data, options);
       }
     </script>
-    
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
 
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
@@ -197,9 +199,9 @@
         chart.draw(data, options);
       }
     </script>
-    
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
 
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
@@ -232,9 +234,9 @@
         chart.draw(data, options);
       }
     </script>
-    
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
 
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
@@ -313,7 +315,9 @@
 			</div>
 			<div class="panel panel-yellow">
 				<div class="panel-heading">
-					<h3 align="center">${ city1 } is Cooler Than ${ city2 }</h3>
+					<h3 align="center">
+						<strong>${ city1 }</strong> is Cooler Than <strong>${ city2 }</strong>
+					</h3>
 				</div>
 				<div class="panel-body">
 					<div class="row" align="center">
@@ -341,7 +345,7 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-12" align="center">
-							<h4>Based on the following findings:</h4>
+							<h4>The People have Spoken:</h4>
 							<p class="affix">
 							<table>
 
@@ -350,9 +354,9 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td>Crime is a higher concern for people in <font
-												color="red">${ crime }</font>.
-											</td>
+											<td><h4>
+													<font color=""#F0AD4E">Crime</font> is a higher concern for
+													people in <font color="red">${ crime }.<h4></font></td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
@@ -362,9 +366,10 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td>Residents in <font color="green">${ education }</font>
-												seem satisfied with their education.
-											</td>
+											<td><h4>
+													Residents in <font color="green">${ education }</font> seem
+													satisfied with their <font color=""#F0AD4E">education</font>.
+												</h4></td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
@@ -374,8 +379,10 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td>Sports has a greater space in <font color="green">${ sports }</font>.
-											</td>
+											<td><h4>
+													<font color=""#F0AD4E">Sports</font> has a greater space in
+													<font color="green">${ sports }</font>.
+												</h4></td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
@@ -385,9 +392,11 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td>Celebrities and VIP talk less about <font
-												color="red">${ celebrity }</font>.
-											</td>
+											<td><h4>
+													<font color=""#F0AD4E">Celebrities</font> and VIPs rarely
+													mention <font color="red">${ celebrity }</font> on their
+													posts.
+												</h4></td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
@@ -397,9 +406,10 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td>People seem to be happier about their jobs in <font
-												color="green">${ employment }</font>.
-											</td>
+											<td><h4>
+													People seem to be happier about their <font color=""#F0AD4E">jobs</font>
+													in <font color="green">${ employment }</font>.
+												</h4></td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
@@ -409,9 +419,10 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td>Everyone is talking about eating out and partying in
-												<font color="green">${ restaurants }</font>!
-											</td>
+											<td><h4>
+													Many more are talking about <font color=""#F0AD4E">eating
+														out and partying</font> in <font color="green">${ restaurants }</font>!
+												</h4></td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
@@ -431,20 +442,26 @@
 			<!-- Google Graphics begin here -->
 			<div class="panel panel-primary">
 				<div class="panel-heading">
-					<div class="row">
-						<strong>Graphics</strong>
-					</div>
-
+					<h4 align="center">Let's Be More Precise</h4>
 				</div>
-				<div id="chart_div_sport"></div>
-				<div id="chart_div_res"></div>
-				<div id="chart_div_job"></div>
-				<div id="chart_div_cel"></div>
-				<div id="chart_div_edu"></div>
-				<div id="chart_div_cri"></div>
+
+				<div class="panel-body">
+					<div class="row" align="center">
+						<div class="col-lg-4" align="center">
+							<div id="chart_div_sport"></div>
+							<div id="chart_div_res"></div>
+							<div id="chart_div_job"></div>
+						</div>
+					</div>
+					<div class="row" align="center">
+						<div class="col-lg-4" align="center">
+							<div id="chart_div_cel"></div>
+							<div id="chart_div_edu"></div>
+							<div id="chart_div_cri"></div>
+						</div>
+					</div>
+				</div>
 			</div>
-
-
 
 
 			<!-- Social dissmisable box begins -->

@@ -270,7 +270,7 @@
 							aria-hidden="true">&times;</button>
 						<table>
 							<tr>
-								<td>See what's going on in the city! To change the city, type it here: &nbsp;</td>
+								<td>See what's going on in ${ currCity }! To change the city, type it here: &nbsp;</td>
 								<td>
 									<div class="input-group custom-search-form">
 										<form method="post">
