@@ -60,7 +60,7 @@ public class IndexAction extends Action {
 				//System.out.println(city);
 				if (session.getAttribute("currCityPhoto") == null) {
 					session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
-					session.setAttribute("currCityTrend", new ArrayList<String>() {{add("Trend1");add("Trend2");}});//twitter.searchTrends((String) session.getAttribute("currCity")));
+					session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
 				   return "index.do";
 				}
 			}
@@ -237,7 +237,7 @@ public class IndexAction extends Action {
 				
 				session.setAttribute("currCity", form.getLocal());
 				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
-				session.setAttribute("currCityTrend", new ArrayList<String>() {{add("Trend1");add("Trend2");}});// twitter.searchTrends((String) session.getAttribute("currCity")));
+				session.setAttribute("currCityTrend",  twitter.searchTrends((String) session.getAttribute("currCity")));
 
 				return "index.jsp";
 			}
