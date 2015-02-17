@@ -67,18 +67,24 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.do">Hello, we believe you
-					are in <font color="black"> <script type="text/javascript">
+					are in 
+				<font color="black"> 
+				<c:choose>
+					<c:when test="${ (empty currCity) }">
+					     a cool unknown place
+					 </c:when>
+					 <c:otherwise>
+					      ${currCity}
+                     </c:otherwise>
+				</c:choose> 
+				</font>
+				<script type="text/javascript">
 						var city = geoip_city() + ", " + geoip_region();
 						if (city.length <= 2) {
 							change = "an unknown cool place";
-							city = "";
+							city = "Pittsburgh";
 						}
-						if (typeof change === 'undefined') {
-							document.write(city);
-						} else {
-							document.write(change);
-						}
-					</script></font>
+					</script>
 				</a>
 			</div>
 
@@ -86,20 +92,17 @@
 			<div style="display: none;">
 				<iframe id="hidden_frame" name="hidden_frame"></iframe>
 
-				<form id="hidden_form" method="POST" action="toBeEdited"
+				<form id="hidden_form" method="POST" action="index.do"
 					target="hidden_frame">
 					<input type="text" name="hidden_city" />
 					<script type="text/javascript">
 						//<![CDATA[
 						{
-							document.forms[0].elements['hidden_city'].value = "oklahoma";
+							document.forms[0].elements['hidden_city'].value =city;
 						}
 						//]]>
 					</script>
 				</form>
-				<script type="text/javascript">
-					document.getElementById("hidden_form").submit();
-				</script>
 			</div>
 
 			<!-- /.navbar-header -->
@@ -151,6 +154,7 @@
 					var w = window.open("${authUrl}");
 					function checkFunction() {
 						if (w.closed) {
+							document.getElementById("hidden_form").submit();
 							location.reload();
 						}
 					}
@@ -178,14 +182,7 @@
 											<div class="form-group">
 												<h4>Choose City 1</h4>
 												<input name="cities1" required class="form-control"
-													list="cities" placeholder = "City, ST">
-												<script type="text/javascript">
-													//<![CDATA[
-													{
-															document.forms[1].elements['cities1'].value = city;
-													}
-													//]]>
-												</script>
+													list="cities" value="${ currCity }">
 											</div>
 										</td>
 										<td width="200px" align="center">

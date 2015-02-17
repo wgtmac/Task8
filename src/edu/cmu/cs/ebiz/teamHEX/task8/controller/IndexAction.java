@@ -42,16 +42,52 @@ public class IndexAction extends Action {
 		/**
 		 * Get current city and state name from ip address
 		 * */
-		if (session.getAttribute("currCity") == null) {
-			System.out.println( request.getRemoteAddr());
-		//	Document doc = Jsoup.connect("http://www.geoplugin.net/xml.gp?ip=" + request.getRemoteAddr()).get();
-			session.setAttribute("currCity", "Pittsburgh");//doc.getElementsByTag("geoplugin_city").get(0).text());
-		//	session.setAttribute("currState", doc.getElementsByTag("geoplugin_region").get(0).text());				
-		}
+//		if (session.getAttribute("currCity") == null) {
+//			System.out.println( request.getRemoteAddr());
+//			Document doc = Jsoup.connect("http://www.geoplugin.net/xml.gp?ip=" + request.getRemoteAddr()).get();
+//			session.setAttribute("currCity", "Pittsburgh");//doc.getElementsByTag("geoplugin_city").get(0).text());
+//			session.setAttribute("currState", doc.getElementsByTag("geoplugin_region").get(0).text());				
+//		}
 		
 		try {
 			
-			if (session.getAttribute("currCityPhoto") == null) {
+			if (request.getParameter("hidden_city") != null && !request.getParameter("hidden_city").equals("")) {
+				String city = (String) request.getParameter("hidden_city");
+				if (city.indexOf(",") != -1) {
+					city = city.split(",")[0];
+				}
+				session.setAttribute("currCity", city);
+				//System.out.println(city);
+				if (session.getAttribute("currCityPhoto") == null) {
+					session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
+					session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
+					
+					ArrayList<String> topicList = new ArrayList<String>();
+					topicList=flickr.getListOfDiscussionsForGroup("2825475%40N22");
+					
+					
+					System.out.println(topicList);
+					
+					ArrayList<String> topicDisplayList = new ArrayList<String>();
+					ArrayList<String> replyDisplayList = new ArrayList<String>();
+//					for(int i=0;i<topicList.size();i++){
+//						if(i==0){
+//							replyDisplayList=flickr.getListOfRepliesForTopics("2825475%40N22", topicList.get(i));				
+//						} else if(i%2==0){
+//							replyDisplayList=flickr.getListOfRepliesForTopics("2825475%40N22", topicList.get(i));
+//						}else{
+//							topicDisplayList.add(topicList.get(i));	
+//						}
+//					}
+					session.setAttribute("topics",topicDisplayList );
+					session.setAttribute("replies", replyDisplayList);
+					
+				}
+
+				return "index.do";
+			}
+			
+			if (session.getAttribute("currCityPhoto") == null && session.getAttribute("currCity") != null) {
 				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
 				session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
 				ArrayList<String> topicList = new ArrayList<String>();
@@ -65,7 +101,6 @@ public class IndexAction extends Action {
 						replyDisplayList=flickr.getListOfRepliesForTopics("2825475%40N22", topicList.get(i));
 					}else{
 						topicDisplayList.add(topicList.get(i));	
-						
 					}
 				}
 				session.setAttribute("topics",topicDisplayList );

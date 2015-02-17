@@ -29,13 +29,6 @@ public class Controller extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String nextPage = performTheAction(request);
-		System.out.println("nextpage: " + nextPage);
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		sendToNextPage(nextPage, request, response);
 	}
 

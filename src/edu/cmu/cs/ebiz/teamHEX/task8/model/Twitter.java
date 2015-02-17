@@ -123,8 +123,9 @@ public class Twitter extends WebAccessor {
     /**
      * Fetch trends for a city
      */
-	public ArrayList<String> searchTrends (String city) throws IOException {
+	public ArrayList<String> searchTrends (String city) throws IOException {		
 		HttpsURLConnection connection = null;
+
 		// get OAuth Token
 		String token = getAuthenticationToken("https://api.twitter.com/oauth2/token");
 		
@@ -181,7 +182,7 @@ public class Twitter extends WebAccessor {
 			queryUrl += "&" + key +"=" + URLEncoder.encode(parameters.get(key), "UTF-8");
 		}
 		
-		System.out.println(queryUrl);
+		//System.out.println(queryUrl);
 		
 		try {
 			URL url = new URL(queryUrl);

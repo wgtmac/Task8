@@ -106,16 +106,12 @@ public class Flickr extends WebAccessor {
 		for (int i = 0; i < nodeList.getLength(); i++) {
 			Node node = nodeList.item(i);
 
-			String id = (String) xpath.evaluate("@id", node,
-					XPathConstants.STRING);
-			String server = (String) xpath.evaluate("@server", node,
-					XPathConstants.STRING);
-			String secret = (String) xpath.evaluate("@secret", node,
-					XPathConstants.STRING);
+			String id = (String) xpath.evaluate("@id", node, XPathConstants.STRING);
+			String server = (String) xpath.evaluate("@server", node, XPathConstants.STRING);
+			String secret = (String) xpath.evaluate("@secret", node, XPathConstants.STRING);
 
-			String flickrurl = "http://static.flickr.com/" + server + "/" + id
-					+ "_" + secret + ".jpg";
-			System.out.println(flickrurl);
+			String flickrurl = "http://static.flickr.com/" + server + "/" + id 	+ "_" + secret + ".jpg";
+			//System.out.println(flickrurl);
 
 			res.add(flickrurl);
 		}
@@ -508,7 +504,7 @@ public class Flickr extends WebAccessor {
 		String sig = flickrSecret + "api_key" + flickrKey + "frob" + frob + "method" + methodGetToken;
 		String signature = MD5(sig);
 		String request = "https://api.flickr.com/services/rest/?method=" + methodGetToken + "&api_key=" + flickrKey + "&frob=" + frob + "&api_sig=" + signature;
-		System.out.println("Token request: " + request);
+		//System.out.println("Token request: " + request);
 		
 		URL url = new URL(request);
 		HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
@@ -536,11 +532,11 @@ public class Flickr extends WebAccessor {
 			//System.out.println("Auth token successfully received.");
 			return token;
 		} else {
-			NodeList error = response.getElementsByTagName("err");
+//			NodeList error = response.getElementsByTagName("err");
 			// Get Flickr error code and msg
-			String code = error.item(0).getAttributes().item(0).getTextContent();
-			String msg = error.item(0).getAttributes().item(1).getTextContent();
-			System.out.println("Flickr request failed with error code " + code + ", " + msg);
+//			String code = error.item(0).getAttributes().item(0).getTextContent();
+//			String msg = error.item(0).getAttributes().item(1).getTextContent();
+//			System.out.println("Flickr request failed with error code " + code + ", " + msg);
 //			System.out.println("Auth token not received. Fix this before moving on.");
 			return null;
 		}
