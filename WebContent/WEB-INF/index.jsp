@@ -355,12 +355,14 @@
 								<!-- Method API to display Questions -->
 								
 									
-									<c:forEach var="obj" items="${topics}">
+									<c:forEach var="obj1" items="${topics}">
 									<tr>
-										<td>${obj}</td>
+										<td>${obj1}</td>
 									</tr>
+									
 									<tr>
 									    <c:forEach var="obj" items="${replies}">
+
 									    <tr>
 										<td>${obj}</td>
 									</tr>
