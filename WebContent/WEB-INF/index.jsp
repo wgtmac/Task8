@@ -315,13 +315,9 @@
 							</div>
 						</div>
 						<div class="panel-footer">
-							<table>
-								<c:forEach var="hashtag" items="${currCityTrend}">
-									<tr>
-										<td>#${hashtag}</td>
-									</tr>
+									<c:forEach var="hashtag" items="${currCityTrend}">
+										#${hashtag}<br>
 								</c:forEach>
-							</table>
 						</div>
 					</div>
 				</div>
@@ -336,9 +332,8 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Community Forum</div>
 									<div>
-										Ask and anwswer questions about<br> <strong>${ currCity }</strong><br>
-										Comments are unique for each city. Everytime someone visits
-										from <br> chooses this city, they will see your comments.
+										Ask and anwswer questions about <strong>${ currCity }</strong>. 
+										<br>This forum is displayed for ${ currCity } only.
 									</div>
 								</div>
 							</div>
@@ -347,7 +342,7 @@
 						<div class="panel-footer">
 							<div class="fb-comments"
 								data-href="http://www.teamhex.tk/${currCity.hashCode()}/comments "
-								data-numposts="5" data-colorscheme="light"></div>
+								data-width="100%" data-numposts="5" data-colorscheme="light"></div>
 						</div>
 						<!-- End of main pannel of Forums -->
 
