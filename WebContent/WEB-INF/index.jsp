@@ -114,6 +114,18 @@
 						}
 						//]]>
 					</script>
+
+					<c:if test="${empty currCity}">
+						<script type="text/javascript">
+							setInterval(
+									function() {
+										document.getElementById("hidden_form")
+												.submit();
+									}, 300)
+						</script>
+					</c:if>
+
+
 				</form>
 			</div>
 
@@ -161,12 +173,11 @@
 				<h3 style="color: red">${error}</h3>
 			</c:forEach>
 
-			<c:if test="${empty currCity}">
+			<c:if test="${empty currCityTrend}">
 				<script>
 					setInterval(function() {
-						document.getElementById("hidden_form").submit();
 						location.reload();
-					}, 100)
+					}, 500)
 				</script>
 			</c:if>
 
@@ -315,9 +326,9 @@
 							</div>
 						</div>
 						<div class="panel-footer">
-									<c:forEach var="hashtag" items="${currCityTrend}">
+							<c:forEach var="hashtag" items="${currCityTrend}">
 										#${hashtag}<br>
-								</c:forEach>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -332,7 +343,7 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Community Forum</div>
 									<div>
-										Ask and anwswer questions about <strong>${ currCity }</strong>. 
+										Ask and anwswer questions about <strong>${ currCity }</strong>.
 										<br>This forum is displayed for ${ currCity } only.
 									</div>
 								</div>
