@@ -303,7 +303,7 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">@ # !</div>
 									<div>
-										Trendy tweets about<br><strong>${ currCity }</strong>
+										Latest trends in <br><strong>${ currCity }</strong>
 										<script type="text/javascript">
 											// 											if (typeof change === 'undefined') {
 											// 												document.write(city);
