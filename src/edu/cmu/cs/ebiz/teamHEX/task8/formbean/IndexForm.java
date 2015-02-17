@@ -143,7 +143,7 @@ public class IndexForm extends FormBean {
 			}
 		
 			if (!Model.isCityExist(cities1) || !Model.isCityExist(cities2)) {
-				errors.add("Cities are not existing, please input again");
+				errors.add("Whoa! That's not a city. Try again");
 			}
 			
 			if ( (sports == null || sports.length() == 0) && (restaurants == null || restaurants.length() == 0) 
