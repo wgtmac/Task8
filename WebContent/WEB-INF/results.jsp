@@ -160,7 +160,7 @@
                        'height':300};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_job'));
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div_cel'));
         chart.draw(data, options);
       }
     </script>
@@ -195,7 +195,7 @@
                        'height':300};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_cel'));
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div_job'));
         chart.draw(data, options);
       }
     </script>
