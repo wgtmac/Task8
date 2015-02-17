@@ -148,7 +148,7 @@ public class Twitter extends WebAccessor {
 			JSONArray msgArray = (JSONArray) JSONValue.parse(readResponse(connection));
 			
 			if (msgArray == null || msgArray.size() == 0) {
-				resultArrayList.add("Exceeding the ratelimit of Twitter, please try again.");
+				resultArrayList.add("We're sorry. Twitter is too busy to talk now. Call back in 15 mins (Err: Exceded rate limit)");
 				return resultArrayList;
 			}
 			
@@ -233,7 +233,7 @@ public class Twitter extends WebAccessor {
 	}
 
 	public int getCountOfSports (String city) throws IOException {
-		return getCount(city + " @espn OR @FOXSports", 1);
+		return getCount(city + " @espn OR @FOXSports OR @NFL", 1);
 	}
 	
 	public int getCountOfEducation (String city) throws IOException {
@@ -245,28 +245,18 @@ public class Twitter extends WebAccessor {
 	}
 	
 	public int getCountOfJobs (String city) throws IOException {
-		return getCount(city + " jobs OR employment", 1);
+		return getCount(city + " jobs", 1);
 	}
 	
 	public int getCountOfRestaurants (String city) throws IOException {
-		return getCount(city + " restaurant OR pubs OR nightclubs OR food%3A)", 0);
+		return getCount(city + " restaurant OR pubs OR nightclubs OR nightlife)", 0);
 	}
 
 	public int getCountOfCelebrity (String city) throws IOException {
-		return getCount(city + " mtv OR ftvdotcom OR tmz OR eNews OR bravomagazin OR thr OR deadline%3A)", 7);
+		return getCount(city + " mtv OR ftvdotcom OR tmz OR eNews OR bravomagazin)", 7);
 	}
 	
 	public void fetchTweetsExample () throws IOException {	
-		//System.out.println(searchTrends("Pittsburgh"));
-		//System.out.println(getCountOfCrime("Los Angeles"));
-//		System.out.println(getCountOfCrime("New York"));
-//		System.out.println(getCountOfCrime("Pittsburgh"));
-//		System.out.println(getCountOfCrime("Boston"));
-		System.out.println(getCountOfCrime("Los Angeles"));
-		System.out.println(getCountOfCrime("New York"));
-		System.out.println(getCountOfCrime("Pittsburgh"));
-		System.out.println(getCountOfCrime("Boston"));
-		System.out.println(getCountOfJobs("San Francisco"));
 		System.out.println(getCountOfRestaurants("Los Angeles"));
 		System.out.println(getCountOfRestaurants("Pittsburgh"));
 		System.out.println(getCountOfCelebrity("Los Angeles"));

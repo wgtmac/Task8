@@ -485,18 +485,18 @@
 								<div class="panel-heading">
 									<h4>Sports Comparison</h4>
 								</div>
-								
+
 								<c:choose>
 									<c:when test="${ (empty sports) }">
 									</c:when>
 									<c:otherwise>
 										<div class="panel-footer">
-									<div id="chart_div_sport"></div>
-								</div>
+											<div id="chart_div_sport"></div>
+										</div>
 									</c:otherwise>
 								</c:choose>
-								
-								
+
+
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-4">
@@ -504,14 +504,14 @@
 								<div class="panel-heading">
 									<h4>Restaurants and Nightlife Comparison</h4>
 								</div>
-								
+
 								<c:choose>
 									<c:when test="${ (empty restaurants) }">
 									</c:when>
 									<c:otherwise>
-	 								<div class="panel-footer">
-									<div id="chart_div_res"></div>
-								</div> 
+										<div class="panel-footer">
+											<div id="chart_div_res"></div>
+										</div>
 									</c:otherwise>
 								</c:choose>
 
@@ -522,18 +522,18 @@
 								<div class="panel-heading">
 									<h4>Jobs Comparison</h4>
 								</div>
-								
+
 								<c:choose>
 									<c:when test="${ (empty employment) }">
 									</c:when>
 									<c:otherwise>
 										<div class="panel-footer">
-									<div id="chart_div_job"></div>
-								</div>
+											<div id="chart_div_job"></div>
+										</div>
 									</c:otherwise>
 								</c:choose>
-								
-								
+
+
 							</div>
 						</div>
 					</div>
@@ -545,18 +545,18 @@
 								<div class="panel-heading">
 									<h4>Celebrities Buzz Comparison</h4>
 								</div>
-								
+
 								<c:choose>
 									<c:when test="${ (empty celebrity) }">
 									</c:when>
 									<c:otherwise>
 										<div class="panel-footer">
-									<div id="chart_div_cel"></div>
-								</div>
+											<div id="chart_div_cel"></div>
+										</div>
 									</c:otherwise>
 								</c:choose>
-								
-								
+
+
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-4">
@@ -564,40 +564,40 @@
 								<div class="panel-heading">
 									<h4>Education Comparison</h4>
 								</div>
-								
+
 								<c:choose>
 									<c:when test="${ (empty education) }">
 									</c:when>
 									<c:otherwise>
 										<div class="panel-footer">
-									<div id="chart_div_edu"></div>
-								</div>
+											<div id="chart_div_edu"></div>
+										</div>
 									</c:otherwise>
 								</c:choose>
-								
-								
+
+
 							</div>
 						</div>
-						
-						
-						
+
+
+
 						<div class="col-lg-4 col-md-4">
 							<div class="panel panel-red">
 								<div class="panel-heading">
 									<h4>Crime Comparison</h4>
 								</div>
-								
+
 								<c:choose>
 									<c:when test="${ (empty crime) }">
 									</c:when>
 									<c:otherwise>
 										<div class="panel-footer">
-									<div id="chart_div_cri"></div>
-								</div>
+											<div id="chart_div_cri"></div>
+										</div>
 									</c:otherwise>
 								</c:choose>
-								
-								
+
+
 							</div>
 						</div>
 					</div>
@@ -621,7 +621,7 @@
 												<i class="fa fa-comments fa-5x"></i>
 											</div>
 											<div class="col-xs-9 text-right">
-												<h4>${ city1 }'s &nbsp; Trends</h4>
+												<h4>${ city1 }'s<br>Trends</h4>
 											</div>
 										</div>
 									</div>
@@ -641,7 +641,7 @@
 												<i class="fa fa-comments fa-5x"></i>
 											</div>
 											<div class="col-xs-9 text-right">
-												<h4>${ city2 }'s &nbsp; Trends</h4>
+												<h4>${ city2 }'s<br>Trends</h4>
 											</div>
 										</div>
 									</div>
@@ -662,12 +662,48 @@
 												<i class="fa fa-comments fa-5x"></i>
 											</div>
 											<div class="col-xs-9 text-right">
-												<h4>${ city1 }'s &nbsp; Pictures on Flicker</h4>
+												<h4>${ city1 }'s&nbsp;Pictures on Flicker</h4>
 											</div>
 										</div>
 									</div>
-									<div class="panel-footer">
-										Flicker Carousel
+									<div class="panel-footer" align="center">
+										<table>
+											<tr height="400px" valign="top">
+												<td align="center" valign="top">
+													<div id="myCarousel" class="carousel slide">
+														<ol class="carousel-indicators">
+															<li data-target="#myCarousel" data-slide-to="0"
+																class="active"></li>
+															<li data-target="#myCarousel" data-slide-to="1"></li>
+															<li data-target="#myCarousel" data-slide-to="2"></li>
+															<li data-target="#myCarousel" data-slide-to="3"></li>
+															<li data-target="#myCarousel" data-slide-to="4"></li>
+														</ol>
+														<div class="carousel-inner">
+															<div class="item active">
+																<img src="${flickrpic1.get(0)}" alt="${city1} Panoramic">
+															</div>
+															<div class="item">
+																<img src="${flickrpic1.get(1)}" alt="${city1} Panoramic">
+															</div>
+															<div class="item">
+																<img src="${flickrpic1.get(2)}" alt="${city1} Panoramic">
+															</div>
+															<div class="item">
+																<img src="${flickrpic1.get(3)}" alt="${city1} Panoramic">
+															</div>
+															<div class="item">
+																<img src="${flickrpic1.get(4)}" alt="${city1} Panoramic">
+															</div>
+														</div>
+														<a class="left carousel-control" href="#myCarousel"
+															data-slide="prev">&lsaquo;</a> <a
+															class="right carousel-control" href="#myCarousel"
+															data-slide="next">&rsaquo;</a>
+													</div>
+												</td>
+											</tr>
+										</table>
 									</div>
 								</div>
 							</div>
@@ -681,12 +717,48 @@
 												<i class="fa fa-comments fa-5x"></i>
 											</div>
 											<div class="col-xs-9 text-right">
-												<h4>${ city2 }'s &nbsp; Pictures on Flicker</h4>
+												<h4>${ city2 }'s&nbsp;Pictures on Flicker</h4>
 											</div>
 										</div>
 									</div>
-									<div class="panel-footer">
-										Flicker 2
+									<div class="panel-footer" align="center">
+										<table>
+											<tr height="400px" valign="top">
+												<td align="center" valign="top">
+													<div id="myCarousel2" class="carousel slide">
+														<ol class="carousel-indicators">
+															<li data-target="#myCarousel2" data-slide-to="0"
+																class="active"></li>
+															<li data-target="#myCarousel2" data-slide-to="1"></li>
+															<li data-target="#myCarousel2" data-slide-to="2"></li>
+															<li data-target="#myCarousel2" data-slide-to="3"></li>
+															<li data-target="#myCarousel2" data-slide-to="4"></li>
+														</ol>
+														<div class="carousel-inner">
+															<div class="item active">
+																<img src="${flickrpic2.get(0)}" alt="${city1} Panoramic">
+															</div>
+															<div class="item">
+																<img src="${flickrpic2.get(1)}" alt="${city1} Panoramic">
+															</div>
+															<div class="item">
+																<img src="${flickrpic2.get(2)}" alt="${city1} Panoramic">
+															</div>
+															<div class="item">
+																<img src="${flickrpic2.get(3)}" alt="${city1} Panoramic">
+															</div>
+															<div class="item">
+																<img src="${flickrpic2.get(4)}" alt="${city1} Panoramic">
+															</div>
+														</div>
+														<a class="left carousel-control" href="#myCarousel2"
+															data-slide="prev">&lsaquo;</a> <a
+															class="right carousel-control" href="#myCarousel2"
+															data-slide="next">&rsaquo;</a>
+													</div>
+												</td>
+											</tr>
+										</table>
 									</div>
 								</div>
 							</div>

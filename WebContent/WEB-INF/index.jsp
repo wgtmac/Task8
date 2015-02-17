@@ -180,9 +180,25 @@
 						<div class="col-lg-12" align="center">
 							<form role="form" method="post">
 								<datalist id="cities">
-									<c:forEach items="${cityList}" var="listValue">
-										<option value="${listValue}">
-									</c:forEach>
+									<option value="Anaheim, CA">
+									<option value="Boston, MA">
+									<option value="Chicago, IL">
+									<option value="Detroit, MI">
+									<option value="Houston, TX">
+									<option value="Las Vegas, NV">
+									<option value="Los Angeles, CA">
+									<option value="Miami, FL">
+									<option value="New York, NY">
+									<option value="Orlando, FL">
+									<option value="Portland, OR">
+									<option value="Philadelphia, PA">
+									<option value="Pittsburgh, PA">
+									<option value="San Diego, CA">
+									<option value="San Francisco, CA">
+									<option value="San Jose, CA">
+									<option value="Seattle, WA">
+									<option value="Tucson, TX">
+									<option value="Washington, DC">																	
 								</datalist>
 								<table align="center">
 									<tr>
