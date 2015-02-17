@@ -67,24 +67,21 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.do">Hello, we believe you
-					are in 
-				<font color="black"> 
-				<c:choose>
-					<c:when test="${ (empty currCity) }">
+					are in <font color="black"> <c:choose>
+							<c:when test="${ (empty currCity) }">
 					     a cool unknown place
 					 </c:when>
-					 <c:otherwise>
+							<c:otherwise>
 					      ${currCity}
                      </c:otherwise>
-				</c:choose> 
-				</font>
-				<script type="text/javascript">
-						var city = geoip_city() + ", " + geoip_region();
-						if (city.length <= 2) {
-							change = "an unknown cool place";
-							city = "Pittsburgh";
-						}
-					</script>
+						</c:choose>
+				</font> <script type="text/javascript">
+					var city = geoip_city() + ", " + geoip_region();
+					if (city.length <= 2) {
+						change = "an unknown cool place";
+						city = "Pittsburgh";
+					}
+				</script>
 				</a>
 			</div>
 
@@ -98,7 +95,7 @@
 					<script type="text/javascript">
 						//<![CDATA[
 						{
-							document.forms[0].elements['hidden_city'].value =city;
+							document.forms[0].elements['hidden_city'].value = city;
 						}
 						//]]>
 					</script>
@@ -267,7 +264,8 @@
 							aria-hidden="true">&times;</button>
 						<table>
 							<tr>
-								<td>See what's going on in ${ currCity }! To change the city, type it here: &nbsp;</td>
+								<td>See what's going on in ${ currCity }! To change the
+									city, type it here: &nbsp;</td>
 								<td>
 									<div class="input-group custom-search-form">
 										<form method="post">
@@ -300,7 +298,8 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">@ # !</div>
 									<div>
-										Latest trends in <br><strong>${ currCity }</strong>
+										Latest trends in <br>
+										<strong>${ currCity }</strong>
 										<script type="text/javascript">
 											// 											if (typeof change === 'undefined') {
 											// 												document.write(city);
@@ -334,7 +333,8 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Community Forum</div>
 									<div>
-										Ask and anwswer questions about<br><strong>${ currCity }</strong>
+										Ask and anwswer questions about<br>
+										<strong>${ currCity }</strong>
 										<script type="text/javascript">
 											// 											if (typeof change === 'undefined') {
 											// 												document.write(city);
@@ -350,23 +350,23 @@
 						<div class="panel-footer">
 							<table>
 								<!-- Method API to display Questions -->
-								
-									
-									<c:forEach var="obj1" items="${topics}">
+
+
+								<c:forEach var="obj1" items="${topics}">
 									<tr>
 										<td>${obj1}</td>
 									</tr>
-									
-									<tr>
-									    <c:forEach var="obj" items="${replies}">
 
-									    <tr>
-										<td>${obj}</td>
-									</tr>
-									     </c:forEach>
+									<tr>
+										<c:forEach var="obj" items="${replies}">
+
+											<tr>
+												<td>${obj}</td>
+											</tr>
+										</c:forEach>
 									</tr>
 								</c:forEach>
-										
+
 							</table>
 						</div>
 						<!-- End of main pannel of Forums -->
@@ -385,26 +385,38 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Take a look!</div>
 									<div>
-										Flicker pics from or about<br><strong>${ currCity }</strong>
-										<script type="text/javascript">
-											// 											if (typeof change === 'undefined') {
-											// 												document.write(city);
-											// 											} else {
-											// 												document.write(change);
-											// 											}
-										</script>
+										Flicker pics from or about<br>
+										<strong>${ currCity }</strong>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="panel-footer">
-							<iframe
-								src="https://www.flickr.com/photos/52209513@N03/15944683727/in/photolist-qhYEY8-q5U7WE-pCoGKj-q6K8n9-p8KbWR-qjz5cJ-pLnoTa-pRsbh6-pQgy99-qCDCnP-pebDR2-qjz29Q-pnReTV-oxDo45-ow18e4-pU1UpD-pQTfiY-q34S8o-ouUnaU-qjshUv-pTwC2g-qojoEt-qN3bjC-pDMt4w-qY1yhZ-qNxHFn-qbY7Dz-q6CFSW-q291MA-puLCWj-q7y2SD-pXL7eo-pnChbK-qrGsLW-pFciwv-qfpyNs-qFHCVz-pYFmg6-peGY8Q-r1fKoS-r5gYar-oRR46A-ofpEMw-pC8ax9-pUdYLN-qDQgZ3-qpsdCj-pdS9h5-qkvdDn-pZpGHL/player/"
-								name="frame2" id="frame2" frameborder="0" marginwidth="0"
-								marginheight="0" scrolling="no" onload=""
-								allowtransparency="false" width="100%" height="300px">
 
-							</iframe>
+							<div id="myCarousel" class="carousel slide">
+								<ol class="carousel-indicators">
+									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+									<li data-target="#myCarousel" data-slide-to="1"></li>
+									<li data-target="#myCarousel" data-slide-to="2"></li>
+									<li data-target="#myCarousel" data-slide-to="3"></li>
+									<li data-target="#myCarousel" data-slide-to="4"></li>
+								</ol>
+								<div class="carousel-inner">
+									<div class="item active">
+									
+									<c:forEach var="pic1" items="${currCityPhoto}">
+										<img src="${pic1}" alt="${city1} Panoramic">
+										</div>
+										<div class="item">
+									</c:forEach>								
+									</div>
+								</div>
+								<a class="left carousel-control" href="#myCarousel"
+									data-slide="prev">&lsaquo;</a> <a
+									class="right carousel-control" href="#myCarousel"
+									data-slide="next">&rsaquo;</a>
+							</div>
+
 						</div>
 					</div>
 				</div>
