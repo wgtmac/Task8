@@ -85,7 +85,7 @@
 					<ul class="nav" id="side-menu">
 						<li><a href="index.do"><i class="fa fa-dashboard fa-fw"></i>
 								Cool-O-Meter Home</a></li>
-						<li><a href="about.jsp"><i class="fa fa-files-o fa-fw"></i> What
+						<li><a href="about.do"><i class="fa fa-files-o fa-fw"></i> What
 								is Cool-O-Meter?</a></li>
 					</ul>
 					<br> <img src="resources/img/banner.png"
@@ -103,7 +103,7 @@
 						<button type="button" class="close" data-dismiss="alert"
 							aria-hidden="true">&times;</button>
 						Use our meter to find out how "cool" is your city compared to
-						another one. To learn about the rationale used <a href="about.jsp"
+						another one. To learn about the rationale used <a href="about.do"
 							class="alert-link">click here</a>.
 					</div>
 				</div>
@@ -124,10 +124,8 @@
            <c:if test="${empty token}">
 				<script>
 				 var w = window.open("${authUrl}");
-				 
 				 function checkFunction () {
 					 if (w.closed) {
-						// alert("hehe");
 						 location.reload();
 					 }
 				 }
@@ -228,8 +226,7 @@
 						<div class="row">
 							<div class="col-lg-12" align="center">
 								<div class="form-group">
-									<button type="submit" name="action" value="compare"
-										class="btn btn-danger">
+									<button type="submit" name="action" value="compare" class="btn btn-danger">
 										<h1>GO!</h1>
 									</button>
 									</form>
@@ -254,13 +251,16 @@
 								<td>To change the city, type it here: &nbsp;</td>
 								<td>
 									<div class="input-group custom-search-form">
-										<input type="text" id="cityChange" list="cities"
-											class="form-control" placeholder="City, ST"> <span
-											class="input-group-btn">
-											<button class="btn btn-default" type="button">
+									<form method="post">
+										 <span class="input-group-btn">
+											<input type="text" id="cityChange" list="cities"
+                                            class="form-control" placeholder="City, ST" name="local">
+											<button class="btn btn-default" type="submit" name="action" value="change">
 												<i class="fa fa-search"></i>
 											</button>
 										</span>
+										
+										</form>
 									</div>
 								</td>
 							</tr>
@@ -280,28 +280,26 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">The buzz</div>
 									<div>
-										The most recent tweets about <br>
+										The most recent tweets about <br> ${ currCity }
 										<script type="text/javascript">
-											if (typeof change === 'undefined') {
-												document.write(city);
-											} else {
-												document.write(change);
-											}
+// 											if (typeof change === 'undefined') {
+// 												document.write(city);
+// 											} else {
+// 												document.write(change);
+// 											}
 										</script>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="panel-footer">
-							<table>
-							<!-- Begining of main pannel of Forum -->
-								<tr>
-									<td>Tweeter Tweets Go Here</td>
-								</tr>
-								<tr>
-									<td>Tweeter Tweets Go Here</td>
-								</tr>
-							</table>
+                                <table>
+                                    <c:forEach var="hashtag" items="${currCityTrend}">
+                                        <tr>
+                                            <td>#${hashtag}</td>
+                                        </tr>
+                                    </c:forEach>
+                                </table>
 						</div>
 					</div>
 				</div>
@@ -316,13 +314,13 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Community Forum</div>
 									<div>
-										Ask and anwswer questions about<br>
+										Ask and anwswer questions about<br> ${ currCity }
 										<script type="text/javascript">
-											if (typeof change === 'undefined') {
-												document.write(city);
-											} else {
-												document.write(change);
-											}
+// 											if (typeof change === 'undefined') {
+// 												document.write(city);
+// 											} else {
+// 												document.write(change);
+// 											}
 										</script>
 									</div>
 								</div>
@@ -382,13 +380,13 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Take a look!</div>
 									<div>
-										Flicker pics related to <br>
+										Flicker pics related to <br> ${ currCity }
 										<script type="text/javascript">
-											if (typeof change === 'undefined') {
-												document.write(city);
-											} else {
-												document.write(change);
-											}
+// 											if (typeof change === 'undefined') {
+// 												document.write(city);
+// 											} else {
+// 												document.write(change);
+// 											}
 										</script>
 									</div>
 								</div>
@@ -399,6 +397,7 @@
 								src="https://www.flickr.com/photos/52209513@N03/15944683727/in/photolist-qhYEY8-q5U7WE-pCoGKj-q6K8n9-p8KbWR-qjz5cJ-pLnoTa-pRsbh6-pQgy99-qCDCnP-pebDR2-qjz29Q-pnReTV-oxDo45-ow18e4-pU1UpD-pQTfiY-q34S8o-ouUnaU-qjshUv-pTwC2g-qojoEt-qN3bjC-pDMt4w-qY1yhZ-qNxHFn-qbY7Dz-q6CFSW-q291MA-puLCWj-q7y2SD-pXL7eo-pnChbK-qrGsLW-pFciwv-qfpyNs-qFHCVz-pYFmg6-peGY8Q-r1fKoS-r5gYar-oRR46A-ofpEMw-pC8ax9-pUdYLN-qDQgZ3-qpsdCj-pdS9h5-qkvdDn-pZpGHL/player/"
 								name="frame2" id="frame2" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" onload=""
 								allowtransparency="false" width="100%" height="300px">
+
 							</iframe>
 						</div>
 					</div>
