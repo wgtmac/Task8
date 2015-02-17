@@ -357,10 +357,11 @@
 									
 									<c:forEach var="obj1" items="${topics}">
 									<tr>
-									    <c:forEach var="obj" items="${replies}">
-									<tr>
 										<td>${obj1}</td>
 									</tr>
+									
+									<tr>
+									    <c:forEach var="obj" items="${replies}">
 
 									    <tr>
 										<td>${obj}</td>
