@@ -46,7 +46,7 @@
 
 <body>
 
-<div id="fb-root"></div>
+	<div id="fb-root"></div>
 	<div id="fb-root"></div>
 	<script>
 		(function(d, s, id) {
@@ -282,8 +282,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">Hi, we believe you are
-					in <strong>${ currCity }</strong>
+				<a class="navbar-brand" href="index.html">There are news for <strong>${ currCity }</strong>!
 				</a>
 			</div>
 			<!-- /.navbar-header -->
@@ -294,9 +293,9 @@
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
 						<li><a href="index.do"><i class="fa fa-dashboard fa-fw"></i>
-								Cool-O-Meter Home</a></li>
-						<li><a href="#"><i class="fa fa-files-o fa-fw"></i> What
-								is Cool-O-Meter?</a></li>
+								Start other Match!</a></li>
+						<li><a href="about.do"><i class="fa fa-files-o fa-fw"></i>
+								How does this work?</a></li>
 					</ul>
 					<br> <img src="resources/img/banner.png"
 						alt="social media banner" />
@@ -447,29 +446,83 @@
 
 				<div class="panel-body">
 					<div class="row" align="center">
-						<div class="col-lg-4" align="center">
-							<div id="chart_div_sport"></div>
-							<div id="chart_div_res"></div>
-							<div id="chart_div_job"></div>
-						</div>
-					</div>
-					<div class="row" align="center">
-						<div class="col-lg-4" align="center">
-							<div id="chart_div_cel"></div>
-							<div id="chart_div_edu"></div>
-							<div id="chart_div_cri"></div>
-						</div>
-					</div>
-				</div>
-			</div>
 
+						<div class="col-lg-4 col-md-4">
+							<div class="panel panel-warning">
+								<div class="panel-heading">
+									<h4>Sports Comparison</h4>
+								</div>
+								<div class="panel-footer">
+									<div id="chart_div_sport"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4">
+							<div class="panel panel-danger">
+								<div class="panel-heading">
+									<h4>Restaurants and Nightlife Comparison</h4>
+								</div>
+								<div class="panel-footer">
+									<div id="chart_div_res"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4">
+							<div class="panel panel-yellow">
+								<div class="panel-heading">
+									<h4>Jobs Comparison</h4>
+								</div>
+								<div class="panel-footer">
+									<div id="chart_div_job"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row" align="center">
+
+						<div class="col-lg-4 col-md-4">
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<h4>Celebrities Buzz Comparison</h4>
+								</div>
+								<div class="panel-footer">
+									<div id="chart_div_cel"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4">
+							<div class="panel panel-green">
+								<div class="panel-heading">
+									<h4>Education Comparison</h4>
+								</div>
+								<div class="panel-footer">
+									<div id="chart_div_edu"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4">
+							<div class="panel panel-red">
+								<div class="panel-heading">
+									<h4>Crime Comparison</h4>
+								</div>
+								<div class="panel-footer">
+									<div id="chart_div_cri"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 
 			<!-- Social dissmisable box begins -->
 			<div class="alert alert-info alert-dismissable">
 				<button type="button" class="close" data-dismiss="alert"
 					aria-hidden="true">&times;</button>
+					<div class="panel-heading">
+									<h4>Social Buzz</h4>
+					</div>
+					
 				<div class="row">
-					<h4>&nbsp; &nbsp; Social Buzz</h4>
 
 					<div class="col-lg-3 col-md-3">
 						<div class="panel panel-green">
@@ -479,7 +532,7 @@
 										<i class="fa fa-comments fa-5x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<h4>${ city1 }'sTweets</h4>
+										<h4>${ city1 }'sTrends</h4>
 									</div>
 								</div>
 							</div>
@@ -495,7 +548,7 @@
 						</div>
 					</div>
 
-					<div class="col-lg-6 col-md-6">
+					<div class="col-lg-5 col-md-5">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<div class="row">
@@ -504,7 +557,10 @@
 									</div>
 									<div class="col-xs-9 text-right">
 										<h4>What do you think about the results?</h4>
-										<div>Comments are displayed for each set of results</div>
+										<div>
+											Comments are displayed for each set of results.<br>Everytime
+											someone runs this match, they will see your comments.
+										</div>
 									</div>
 								</div>
 							</div>
@@ -526,7 +582,7 @@
 										<i class="fa fa-comments fa-5x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<h4>${ city2 }'sTweets</h4>
+										<h4>${ city2 }'sTrends</h4>
 									</div>
 								</div>
 							</div>
@@ -548,7 +604,7 @@
 			</div>
 
 			<!-- Flicker dissmisable box begins -->
-			<div class="alert alert-primary alert-dismissable">
+			<div class="alert alert-default alert-dismissable">
 				<button type="button" class="close" data-dismiss="alert"
 					aria-hidden="true">&times;</button>
 				<div class="row">
@@ -571,7 +627,7 @@
 								<table>
 									<c:forEach var="pic1" items="${flickrpic1}">
 										<tr>
-											<td><a href="${pic1}" target="new"> <img
+											<td align="center"><a href="${pic1}" target="new"> <img
 													src="${pic1}" alt="${city1} Panoramic"></a><br> <br></td>
 										</tr>
 									</c:forEach>
@@ -597,7 +653,7 @@
 								<table>
 									<c:forEach var="pic2" items="${flickrpic2}">
 										<tr>
-											<td><a href="${pic2}" target="new"> <img
+											<td align="center"><a href="${pic2}" target="new"> <img
 													src="${pic2}" alt="${city2} Panoramic"></a><br> <br></td>
 										</tr>
 									</c:forEach>
@@ -611,11 +667,10 @@
 				</div>
 				<!-- /dismiss button-->
 
-
 			</div>
 			<hr>
 			<p align="center">
-				Team Hex | All Rights Reserved | Carnegie Mellon University © 2015<br>
+				Team Hex | All Rights Reserved | Carnegie Mellon University  &copy; 2015<br>
 				Site developed by for educational purposes only
 			</p>
 			<!-- /#page-wrapper -->
