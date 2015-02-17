@@ -60,7 +60,7 @@ public class IndexAction extends Action {
 				//System.out.println(city);
 				if (session.getAttribute("currCityPhoto") == null) {
 					session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
-					session.setAttribute("currCityTrend", new ArrayList<String>() {{add("Trend1");add("Trend2");}});//twitter.searchTrends((String) session.getAttribute("currCity")));
+					session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
 				   return "index.do";
 				}
 			}
@@ -175,11 +175,11 @@ public class IndexAction extends Action {
 						request.setAttribute("city1cel", city1);
 						request.setAttribute("city2celscore", score2);
 						request.setAttribute("city2cel", city2);
-						request.setAttribute("celebrity", score1 >= score2 ? city1 : city2);
+						request.setAttribute("celebrity", score1 >= score2 ?  city2 : city1);
 						if (score1 >= score2) {
-							total1++;
-						} else {
 							total2++;
+						} else {
+							total1++;
 						}
 						break;
 					case "education":
@@ -203,7 +203,7 @@ public class IndexAction extends Action {
 						request.setAttribute("city1cri", city1);
 						request.setAttribute("city2criscore", score2);
 						request.setAttribute("city2cri", city2);
-						request.setAttribute("crime", score1 >= score2 ? city2 : city1);
+						request.setAttribute("crime", score1 >= score2 ? city1 : city2);
 						if (score1 >= score2) {
 							total2++;
 						} else {
@@ -237,7 +237,7 @@ public class IndexAction extends Action {
 				
 				session.setAttribute("currCity", form.getLocal());
 				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
-				session.setAttribute("currCityTrend", new ArrayList<String>() {{add("Trend1");add("Trend2");}});// twitter.searchTrends((String) session.getAttribute("currCity")));
+				session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
 
 				return "index.jsp";
 			}
