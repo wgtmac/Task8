@@ -130,7 +130,7 @@ public class Twitter extends WebAccessor {
 		
 		// construct query request
 		String queryUrl = "https://api.twitter.com/1.1/trends/place.json?id=" +getWoeid(city);		
-		System.out.println(queryUrl);
+		//System.out.println(queryUrl);
 		
 		try {
 			URL url = new URL(queryUrl);

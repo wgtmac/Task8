@@ -67,17 +67,28 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.do">Hello, we believe you
-					are in <font color="black"> <script type="text/javascript">
-						var city = geoip_city() + ", " + geoip_region();
-						if (city.length <= 2) {
-							change = "an unknown cool place";
-							city = "";
-						}
-						if (typeof change === 'undefined') {
-							document.write(city);
-						} else {
-							document.write(change);
-						}
+					are in <font color="black"> 
+					
+			<c:choose>
+                <c:when test="${ (empty currCity) }">
+                   a cool unknown place
+                </c:when>
+                <c:otherwise>
+                    ${currCity}
+                </c:otherwise>
+            </c:choose>
+					
+					 <script type="text/javascript">
+ 						var city = geoip_city() + ", " + geoip_region();
+ 						if (city.length <= 2) {
+// 							change = "an unknown cool place";
+ 							city = "";
+ 						}
+// 						if (typeof change === 'undefined') {
+// 							document.write(city);
+// 						} else {
+// 							document.write(change);
+// 						}
 					</script></font>
 				</a>
 			</div>
@@ -86,20 +97,18 @@
 			<div style="display: none;">
 				<iframe id="hidden_frame" name="hidden_frame"></iframe>
 
-				<form id="hidden_form" method="POST" action="toBeEdited"
+				<form id="hidden_form" method="POST" action="index.do"
 					target="hidden_frame">
 					<input type="text" name="hidden_city" />
+					
 					<script type="text/javascript">
 						//<![CDATA[
 						{
-							document.forms[0].elements['hidden_city'].value = "oklahoma";
+							document.forms[0].elements['hidden_city'].value = city;
 						}
 						//]]>
 					</script>
 				</form>
-				<script type="text/javascript">
-					document.getElementById("hidden_form").submit();
-				</script>
 			</div>
 
 			<!-- /.navbar-header -->
@@ -151,7 +160,8 @@
 					var w = window.open("${authUrl}");
 					function checkFunction() {
 						if (w.closed) {
-							location.reload();
+							document.getElementById("hidden_form").submit();
+		                     location.reload();
 						}
 					}
 					var time = self.setInterval("checkFunction()", 1000)
@@ -178,18 +188,7 @@
 											<div class="form-group">
 												<h4>Choose City 1</h4>
 												<input name="cities1" required class="form-control"
-													list="cities">
-												<script type="text/javascript">
-													//<![CDATA[
-													{
-														if (typeof change === 'undefined') {
-															document.forms[0].elements['cities1'].value = city;
-														} else {
-															document.forms[0].elements['cities1'].placeholder = "City, ST";
-														}
-													}
-													//]]>
-												</script>
+													list="cities" value="${ currCity }">
 											</div>
 										</td>
 										<td width="200px" align="center">

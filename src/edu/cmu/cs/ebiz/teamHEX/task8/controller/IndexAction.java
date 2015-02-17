@@ -42,16 +42,32 @@ public class IndexAction extends Action {
 		/**
 		 * Get current city and state name from ip address
 		 * */
-		if (session.getAttribute("currCity") == null) {
-			System.out.println( request.getRemoteAddr());
-		//	Document doc = Jsoup.connect("http://www.geoplugin.net/xml.gp?ip=" + request.getRemoteAddr()).get();
-			session.setAttribute("currCity", "Pittsburgh");//doc.getElementsByTag("geoplugin_city").get(0).text());
-		//	session.setAttribute("currState", doc.getElementsByTag("geoplugin_region").get(0).text());				
-		}
+//		if (session.getAttribute("currCity") == null) {
+//			System.out.println( request.getRemoteAddr());
+//			Document doc = Jsoup.connect("http://www.geoplugin.net/xml.gp?ip=" + request.getRemoteAddr()).get();
+//			session.setAttribute("currCity", doc.getElementsByTag("geoplugin_city").get(0).text());
+//			session.setAttribute("currState", doc.getElementsByTag("geoplugin_region").get(0).text());				
+//		}
 		
 		try {
+			if (request.getParameter("hidden_city") != null && !request.getParameter("hidden_city").equals("")) {
+				String city = (String)request.getParameter("hidden_city");
+				if (city.indexOf(",") != -1) {
+					city = city.split(",")[0];
+				}
+				session.setAttribute("currCity", city);
+				
+				System.out.println(city);
+				
+				if (session.getAttribute("currCityPhoto") == null) {
+					session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
+					session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
+				}
+				
+				return "index.do";
+			}
 			
-			if (session.getAttribute("currCityPhoto") == null) {
+			if (session.getAttribute("currCityPhoto") == null && session.getAttribute("currCity") != null) {
 				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
 				session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
 			}
@@ -68,6 +84,7 @@ public class IndexAction extends Action {
 					return "index.jsp";
 				}
 				session.setAttribute("token", flickr.token);
+			} else {
 			}
 			
 			IndexForm form = formBeanFactory.create(request);

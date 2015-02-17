@@ -112,7 +112,7 @@ public class Flickr extends WebAccessor {
 
 			String flickrurl = "http://static.flickr.com/" + server + "/" + id
 					+ "_" + secret + ".jpg";
-			System.out.println(flickrurl);
+	//		System.out.println(flickrurl);
 
 			res.add(flickrurl);
 		}
@@ -388,7 +388,7 @@ public class Flickr extends WebAccessor {
 		Node frobNode = frobResponse.item(0);
 		if (frobNode != null) {
 			frob = frobNode.getTextContent();
-			System.out.println("Successfully retrieved frob: " + frob);
+//			System.out.println("Successfully retrieved frob: " + frob);
 			return frob;
 		} else {
 			// Get Flickr error code and msg
@@ -444,7 +444,7 @@ public class Flickr extends WebAccessor {
 		String sig = flickrSecret + "api_key" + flickrKey + "frob" + frob + "method" + methodGetToken;
 		String signature = MD5(sig);
 		String request = "https://api.flickr.com/services/rest/?method=" + methodGetToken + "&api_key=" + flickrKey + "&frob=" + frob + "&api_sig=" + signature;
-		System.out.println("Token request: " + request);
+	//	System.out.println("Token request: " + request);
 		
 		URL url = new URL(request);
 		HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
@@ -472,11 +472,11 @@ public class Flickr extends WebAccessor {
 			//System.out.println("Auth token successfully received.");
 			return token;
 		} else {
-			NodeList error = response.getElementsByTagName("err");
+//			NodeList error = response.getElementsByTagName("err");
 			// Get Flickr error code and msg
-			String code = error.item(0).getAttributes().item(0).getTextContent();
-			String msg = error.item(0).getAttributes().item(1).getTextContent();
-			System.out.println("Flickr request failed with error code " + code + ", " + msg);
+//			String code = error.item(0).getAttributes().item(0).getTextContent();
+//			String msg = error.item(0).getAttributes().item(1).getTextContent();
+//			System.out.println("Flickr request failed with error code " + code + ", " + msg);
 //			System.out.println("Auth token not received. Fix this before moving on.");
 			return null;
 		}
