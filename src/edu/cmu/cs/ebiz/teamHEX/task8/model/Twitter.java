@@ -147,7 +147,10 @@ public class Twitter extends WebAccessor {
 			ArrayList<String>resultArrayList = new ArrayList<String>();
 			JSONArray msgArray = (JSONArray) JSONValue.parse(readResponse(connection));
 			
-			if (msgArray == null || msgArray.size() == 0) return resultArrayList;
+			if (msgArray == null || msgArray.size() == 0) {
+				resultArrayList.add("Exceeding the ratelimit of Twitter, please try again.");
+				return resultArrayList;
+			}
 			
 			JSONObject jsonObject= (JSONObject) msgArray.iterator().next();
 			msgArray = (JSONArray) jsonObject.get("trends");

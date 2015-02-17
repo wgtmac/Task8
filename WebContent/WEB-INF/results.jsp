@@ -485,9 +485,18 @@
 								<div class="panel-heading">
 									<h4>Sports Comparison</h4>
 								</div>
-								<div class="panel-footer">
+								
+								<c:choose>
+									<c:when test="${ (empty sports) }">
+									</c:when>
+									<c:otherwise>
+										<div class="panel-footer">
 									<div id="chart_div_sport"></div>
 								</div>
+									</c:otherwise>
+								</c:choose>
+								
+								
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-4">
@@ -495,9 +504,17 @@
 								<div class="panel-heading">
 									<h4>Restaurants and Nightlife Comparison</h4>
 								</div>
-								<div class="panel-footer">
+								
+								<c:choose>
+									<c:when test="${ (empty restaurants) }">
+									</c:when>
+									<c:otherwise>
+	 								<div class="panel-footer">
 									<div id="chart_div_res"></div>
-								</div>
+								</div> 
+									</c:otherwise>
+								</c:choose>
+
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-4">
@@ -505,9 +522,18 @@
 								<div class="panel-heading">
 									<h4>Jobs Comparison</h4>
 								</div>
-								<div class="panel-footer">
+								
+								<c:choose>
+									<c:when test="${ (empty employment) }">
+									</c:when>
+									<c:otherwise>
+										<div class="panel-footer">
 									<div id="chart_div_job"></div>
 								</div>
+									</c:otherwise>
+								</c:choose>
+								
+								
 							</div>
 						</div>
 					</div>
@@ -519,9 +545,18 @@
 								<div class="panel-heading">
 									<h4>Celebrities Buzz Comparison</h4>
 								</div>
-								<div class="panel-footer">
+								
+								<c:choose>
+									<c:when test="${ (empty celebrity) }">
+									</c:when>
+									<c:otherwise>
+										<div class="panel-footer">
 									<div id="chart_div_cel"></div>
 								</div>
+									</c:otherwise>
+								</c:choose>
+								
+								
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-4">
@@ -529,19 +564,40 @@
 								<div class="panel-heading">
 									<h4>Education Comparison</h4>
 								</div>
-								<div class="panel-footer">
+								
+								<c:choose>
+									<c:when test="${ (empty education) }">
+									</c:when>
+									<c:otherwise>
+										<div class="panel-footer">
 									<div id="chart_div_edu"></div>
 								</div>
+									</c:otherwise>
+								</c:choose>
+								
+								
 							</div>
 						</div>
+						
+						
+						
 						<div class="col-lg-4 col-md-4">
 							<div class="panel panel-red">
 								<div class="panel-heading">
 									<h4>Crime Comparison</h4>
 								</div>
-								<div class="panel-footer">
+								
+								<c:choose>
+									<c:when test="${ (empty crime) }">
+									</c:when>
+									<c:otherwise>
+										<div class="panel-footer">
 									<div id="chart_div_cri"></div>
 								</div>
+									</c:otherwise>
+								</c:choose>
+								
+								
 							</div>
 						</div>
 					</div>
