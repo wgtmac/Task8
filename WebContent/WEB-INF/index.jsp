@@ -353,38 +353,21 @@
 						<div class="panel-footer">
 							<table>
 								<!-- Method API to display Questions -->
-								<tr>
-									<td><strong>{Flicker_user}: </strong> {Question 1}</td>
-								</tr>
-								<tr>
-									<table>
-										<tr>
-											<!-- Method API to display Answer of UserID of Q1 -->
-											<td><strong>&nbsp; &nbsp; &nbsp;
-													{Flicker_user}: </strong> {Answer 1.1}</td>
-										</tr>
-										<tr>
-											<td><strong>&nbsp; &nbsp; &nbsp;
-													{Flicker_user}: </strong> {Answer 1.2}</td>
-										</tr>
-									</table>
-								</tr>
-
-								<tr>
-									<td><strong>{Flicker_user}: </strong> {Question 2}</td>
-								</tr>
-								<tr>
-									<table>
-										<tr>
-											<td><strong>&nbsp; &nbsp; &nbsp;
-													{Flicker_user}: </strong> {Answer 2.1}</td>
-										</tr>
-										<tr>
-											<td><strong>&nbsp; &nbsp; &nbsp;
-													{Flicker_user}: </strong> {Answer 2.2}</td>
-										</tr>
-									</table>
-								</tr>
+								
+									
+									<c:forEach var="obj" items="${topics}">
+									<tr>
+										<td>${obj}</td>
+									</tr>
+									<tr>
+									    <c:forEach var="obj" items="${replies}">
+									    <tr>
+										<td>${obj}</td>
+									</tr>
+									     </c:forEach>
+									</tr>
+								</c:forEach>
+										
 							</table>
 						</div>
 						<!-- End of main pannel of Forums -->

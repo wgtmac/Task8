@@ -54,6 +54,23 @@ public class IndexAction extends Action {
 			if (session.getAttribute("currCityPhoto") == null) {
 				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
 				session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
+				ArrayList<String> topicList = new ArrayList<String>();
+				topicList=flickr.getListOfDiscussionsForGroup("2825475%40N22");
+				ArrayList<String> topicDisplayList = new ArrayList<String>();
+				ArrayList<String> replyDisplayList = new ArrayList<String>();
+				for(int i=0;i<topicList.size();i++){
+					if(i==0){
+						replyDisplayList=flickr.getListOfRepliesForTopics("2825475%40N22", topicList.get(i));				
+					} else if(i%2==0){
+						replyDisplayList=flickr.getListOfRepliesForTopics("2825475%40N22", topicList.get(i));
+					}else{
+						topicDisplayList.add(topicList.get(i));	
+						
+					}
+				}
+				session.setAttribute("topics",topicDisplayList );
+				session.setAttribute("replies", replyDisplayList);
+
 			}
 			
 			if (session.getAttribute("token") == null) {
@@ -82,8 +99,10 @@ public class IndexAction extends Action {
 			if (errors.size() != 0) {
 				return "index.jsp";
 			}
-			flickr.fetchPhotoExample();
+			
+			flickr.getListOfDiscussionsForGroup("2825475%40N22");
 
+			
 
 			if (form.getAction().equals("compare")) {
 				String city1 = form.getCities1();
@@ -187,6 +206,7 @@ public class IndexAction extends Action {
 				session.setAttribute("currCity", form.getLocal());
 				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
 				session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
+
 				return "index.jsp";
 			} 
 			

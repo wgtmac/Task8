@@ -128,7 +128,6 @@ public class Flickr extends WebAccessor {
 		ArrayList<String> resultArrayList = new ArrayList<String>();
 
 		HttpsURLConnection connection = null;
-		System.out.println(group_id);
 
 		// get the oauth token here
 		String token = "72157650868466245-318784e142f3bb6c";
@@ -190,6 +189,12 @@ public class Flickr extends WebAccessor {
 
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				Node node = nodeList.item(i);
+				
+				String id = (String) xpath.evaluate("@id", node,
+						XPathConstants.STRING);
+
+				resultArrayList.add(id);
+
 
 				String subject = (String) xpath.evaluate("@subject", node,
 						XPathConstants.STRING);
@@ -541,7 +546,7 @@ public class Flickr extends WebAccessor {
 		}
 		
 	}
-	public void fetchPhotoExample() throws XPathExpressionException,
+/*	public void fetchPhotoExample() throws XPathExpressionException,
 	IOException, XMLStreamException, ParserConfigurationException,
 	SAXException {
 		
@@ -550,7 +555,7 @@ public class Flickr extends WebAccessor {
                 System.out.println(getListOfDiscussionsForGroup(group_id));
                 System.out.println(getListOfRepliesForTopics(group_id, topic_id));
           fetchPhotos("Kobe Bryant", 3);
-}
+}*/
 	
 	 
 
