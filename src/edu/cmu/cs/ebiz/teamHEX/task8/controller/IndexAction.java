@@ -88,7 +88,7 @@ public class IndexAction extends Action {
 			}
 			
 			if (session.getAttribute("currCityPhoto") == null && session.getAttribute("currCity") != null) {
-				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity"), 5));
+				session.setAttribute("currCityPhoto", flickr.fetchPhotos((String) session.getAttribute("currCity")+" city", 5));
 				session.setAttribute("currCityTrend", twitter.searchTrends((String) session.getAttribute("currCity")));
 				ArrayList<String> topicList = new ArrayList<String>();
 				topicList=flickr.getListOfDiscussionsForGroup("2825475%40N22");

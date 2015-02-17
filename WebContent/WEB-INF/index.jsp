@@ -54,6 +54,19 @@
 </head>
 
 <body>
+
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
 	<div id="wrapper">
 
 		<!-- Navigation -->
@@ -298,15 +311,7 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">@ # !</div>
 									<div>
-										Latest trends in <br>
-										<strong>${ currCity }</strong>
-										<script type="text/javascript">
-											// 											if (typeof change === 'undefined') {
-											// 												document.write(city);
-											// 											} else {
-											// 												document.write(change);
-											// 											}
-										</script>
+										Latest trends in <br> <strong>${ currCity }</strong>
 									</div>
 								</div>
 							</div>
@@ -333,41 +338,18 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Community Forum</div>
 									<div>
-										Ask and anwswer questions about<br>
-										<strong>${ currCity }</strong>
-										<script type="text/javascript">
-											// 											if (typeof change === 'undefined') {
-											// 												document.write(city);
-											// 											} else {
-											// 												document.write(change);
-											// 											}
-										</script>
+										Ask and anwswer questions about<br> <strong>${ currCity }</strong><br>
+										Comments are unique for each city. Everytime someone visits
+										from <br> chooses this city, they will see your comments.
 									</div>
 								</div>
 							</div>
 						</div>
 						<!-- Begining of main pannel of Forum -->
 						<div class="panel-footer">
-							<table>
-								<!-- Method API to display Questions -->
-
-
-								<c:forEach var="obj1" items="${topics}">
-									<tr>
-										<td>${obj1}</td>
-									</tr>
-
-									<tr>
-										<c:forEach var="obj" items="${replies}">
-
-											<tr>
-												<td>${obj}</td>
-											</tr>
-										</c:forEach>
-									</tr>
-								</c:forEach>
-
-							</table>
+							<div class="fb-comments"
+								data-href="http://www.teamhex.tk/${currCity.hashCode()}/comments "
+								data-numposts="5" data-colorscheme="light"></div>
 						</div>
 						<!-- End of main pannel of Forums -->
 
@@ -385,38 +367,49 @@
 								<div class="col-xs-9 text-right">
 									<div class="huge">Take a look!</div>
 									<div>
-										Flicker pics from or about<br>
-										<strong>${ currCity }</strong>
+										Flicker pics from or about<br> <strong>${ currCity }</strong>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="panel-footer">
-
-							<div id="myCarousel" class="carousel slide">
-								<ol class="carousel-indicators">
-									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-									<li data-target="#myCarousel" data-slide-to="1"></li>
-									<li data-target="#myCarousel" data-slide-to="2"></li>
-									<li data-target="#myCarousel" data-slide-to="3"></li>
-									<li data-target="#myCarousel" data-slide-to="4"></li>
-								</ol>
-								<div class="carousel-inner">
-									<div class="item active">
-									
-									<c:forEach var="pic1" items="${currCityPhoto}">
-										<img src="${pic1}" alt="${city1} Panoramic">
+						<div class="panel-footer" align="center">
+							<table>
+								<tr height="400px" valign="top">
+									<td align="center" valign="top">
+										<div id="myCarousel" class="carousel slide">
+											<ol class="carousel-indicators">
+												<li data-target="#myCarousel" data-slide-to="0"
+													class="active"></li>
+												<li data-target="#myCarousel" data-slide-to="1"></li>
+												<li data-target="#myCarousel" data-slide-to="2"></li>
+												<li data-target="#myCarousel" data-slide-to="3"></li>
+												<li data-target="#myCarousel" data-slide-to="4"></li>
+											</ol>
+											<div class="carousel-inner">
+												<div class="item active">
+													<img src="${currCityPhoto.get(0)}" alt="${city1} Panoramic">
+												</div>
+												<div class="item">
+													<img src="${currCityPhoto.get(1)}" alt="${city1} Panoramic">
+												</div>
+												<div class="item">
+													<img src="${currCityPhoto.get(2)}" alt="${city1} Panoramic">
+												</div>
+												<div class="item">
+													<img src="${currCityPhoto.get(3)}" alt="${city1} Panoramic">
+												</div>
+												<div class="item">
+													<img src="${currCityPhoto.get(4)}" alt="${city1} Panoramic">
+												</div>
+											</div>
+											<a class="left carousel-control" href="#myCarousel"
+												data-slide="prev">&lsaquo;</a> <a
+												class="right carousel-control" href="#myCarousel"
+												data-slide="next">&rsaquo;</a>
 										</div>
-										<div class="item">
-									</c:forEach>								
-									</div>
-								</div>
-								<a class="left carousel-control" href="#myCarousel"
-									data-slide="prev">&lsaquo;</a> <a
-									class="right carousel-control" href="#myCarousel"
-									data-slide="next">&rsaquo;</a>
-							</div>
-
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>
