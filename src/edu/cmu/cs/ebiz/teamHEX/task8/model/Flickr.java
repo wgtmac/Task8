@@ -67,7 +67,7 @@ public class Flickr extends WebAccessor {
 
 		URL url = new URL("https://api.flickr.com/services/rest/?method="
 				+ SEARCH + "&api_key=" + flickrKey + "&per_page=" + count
-				+ "&text=" + URLEncoder.encode(keyword, "UTF-8")
+				+ "&text=" + URLEncoder.encode(keyword + " city", "UTF-8")
 				+ "&tag_mode=all&content_type=1&sort=relevance");
 
 		connection = (HttpsURLConnection) url.openConnection();
