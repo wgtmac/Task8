@@ -327,7 +327,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">There are news for <strong>${ currCity }</strong>!
+				<a class="navbar-brand" href="index.do">There are news for <strong>${ currCity }</strong>!
 				</a>
 			</div>
 			<!-- /.navbar-header -->
