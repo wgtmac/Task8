@@ -100,15 +100,10 @@
 						methods of communication (APIs) so that they can make their own
 						capabilities available to a wider audience through the Internet.
 						Our tool requests data to these companies using those APIs and
-						performs an analysis of the data based on the following criteria:
-						&#8226; Our tool is based on Web Service APIs from Twitter,
-						Flicker and Facebook. <br> &#8226; All you need to know is
-						that these companies have built methods of communication (APIs) so
-						that other web services (us) can make use of their capabilities.<br>
-						&#8226; Our tool requests data to them and performs an analysis of
-						the social trends received from twitter.<br> &#8226; Please
+						performs an analysis of the data received based on the following criteria.
+						<br> &#8226; Please
 						note that the analytics presented are exclusively based on the
-						latest "buzz" only. <br>
+						latest "social buzz" only, not on actual statistics. <br>
 					</div>
 				</div>
 				</div>

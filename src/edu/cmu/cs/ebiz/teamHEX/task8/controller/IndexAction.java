@@ -216,7 +216,7 @@ public class IndexAction extends Action {
 				request.setAttribute("city1", total1 >= total2 ? city1 : city2);
 				request.setAttribute("city2", total1 >= total2 ? city2 : city1);
 				
-				score1 = (int) ((0.0 +total1) / (total1 +total2 + 0.1) * 100);
+				score1 = (int) ((0.0 +total1) / (total1 +total2) * 100);
 				score2 = 100 - score1;
 				
 				request.setAttribute("cityScore1", total1 >= total2 ? Integer.toString(score1) : Integer.toString(score2));
